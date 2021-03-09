@@ -48,17 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38) &amp;&amp; place_meeting(x,y-1,obj_character)){
-    fall = true;
-} else if(y &lt; round(obj_character.y) + 19){
-    fall = false;
-}
-
-if(fall or y &lt; round(obj_character.y) + 19){
-    solid = false;
-} else{
-    solid = true;
-}
+            <string>///script
+scr_platform_step();
 </string>
           </argument>
         </arguments>

@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bHealth = 5;
-grabTime = 5;
+            <string>///script
+scr_normal_create();
 </string>
           </argument>
         </arguments>
@@ -95,50 +95,8 @@ grabTime = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//chomper and bomb
-if(place_meeting(x,y-1,obj_chomper) or (distance_to_object(obj_bomb) &lt;= 76 &amp;&amp; obj_bomb.alarm[0] == -1)){
-    instance_destroy();
-}
-
-if(mouse_check_button(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,self) &amp;&amp; distance_to_object(obj_character) &lt;= 76 &amp;&amp; obj_GUI.on == 0){
-    if(global.countQuick[0] % 2 == 0 &amp;&amp; alarm[0] == -1){
-        grabTime--;
-        alarm[0] = 10;
-    } else if(global.countQuick[0] &amp; 1 &amp;&amp; alarm[1] == -1){
-        bHealth--;
-        alarm[1] = 10;
-    }
-}
-
-if(mouse_check_button_released(mb_left) or !position_meeting(mouse_x,mouse_y,self)){
-    grabTime = 5;
-}
-
-if(grabTime == 0){
-    instance_destroy();
-    for(i = 2;i &lt; 18;i++){
-        if(global.thingsQuick[i] == object_index){
-            global.countQuick[i]++;
-            break;
-        } else if(i == 17){
-            for(index = 2;index &lt; 18;index++){
-                if(global.countQuick[index] == 0){
-                    global.thingsQuick[index] = object_index;
-                    global.countQuick[index]++;
-                    break;
-                }
-            }
-        }
-    }
-} //add to inv??
-
-if(bHealth == 0){
-    instance_destroy();
-    randomize();
-    if(irandom(4) == 4){ //20% chance
-        instance_create(x,y,obj_jewel);
-    }
-}
+            <string>///script
+scr_normal_step();
 </string>
           </argument>
         </arguments>
@@ -161,10 +119,8 @@ if(bHealth == 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-if(bHealth &lt; 5){
-    draw_sprite(spr_cracks,4-bHealth,x,y);
-}
+            <string>///script
+scr_normal_draw();
 </string>
           </argument>
         </arguments>

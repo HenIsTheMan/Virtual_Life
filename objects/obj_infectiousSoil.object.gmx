@@ -48,10 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_nearest(x,y,obj_soil)){
-    instance_change(obj_infectiousSoil,true);
-}
-alarm[0] = 500;
+            <string>///script
+scr_infectiousSoil_alarm0();
 </string>
           </argument>
         </arguments>

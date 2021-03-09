@@ -48,11 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>destroyed = instance_nearest(x,y,obj_soil);
-x = destroyed.x;
-y = destroyed.y;
-destroyed.bHealth = 0;
-alarm[0] = 200;
+            <string>///script
+scr_mole_alarm0();
 </string>
           </argument>
         </arguments>

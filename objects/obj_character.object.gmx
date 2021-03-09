@@ -3,7 +3,7 @@
   <spriteName>spr_characterStill</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.jewels = 0;
+            <string>jewels = 0;
 eq = 0;
 hp = 30;
 image_speed = 0.1;
@@ -33,6 +33,50 @@ hSpeed = 0;
 vSpeed = 0;
 zoomScale = 1;
 dieBlocks[0] = obj_lava;
+
+for(i = 0;i &lt; 30;i++){
+    global.thingsQuick[i] = noone;
+    global.countQuick[i] = 0;
+}
+
+for(r = 0;r &lt; 7;r++){
+    for(c = 0;c &lt; 15;c++){
+        global.thingsInv[c,r] = noone;
+        global.countInv[c,r] = 0;
+    }
+}
+
+global.thingsQuick[5] = obj_infectiousSoil;
+global.countQuick[5] = 100;
+global.thingsQuick[6] = obj_chomper;
+global.countQuick[6] = 100;
+global.thingsQuick[7] = obj_platform;
+global.countQuick[7] = 100;
+global.thingsQuick[8] = obj_mole;
+global.countQuick[8] = 100;
+global.thingsQuick[9] = obj_bomb;
+global.countQuick[9] = 100;
+global.thingsInv[2,2] = obj_mole;
+global.countInv[2,2] = 999;
+
+keyPress[0] = ord('0');
+keyPress[1] = ord('1');
+keyPress[2] = ord('2');
+keyPress[3] = ord('3');
+keyPress[4] = ord('4');
+keyPress[5] = ord('5');
+keyPress[6] = ord('6');
+keyPress[7] = ord('7');
+keyPress[8] = ord('8');
+keyPress[9] = ord('9');
+
+xPos = 38;
+inv = 0;
+on = 0;
+page = 0;
+onColumn = 0;
+onRow = 0;
+drawOnMouse = false;
 </string>
           </argument>
         </arguments>
@@ -56,11 +100,11 @@ dieBlocks[0] = obj_lava;
           <argument>
             <kind>1</kind>
             <string>///movement and collisions
-a = keyboard_check(ord("A")) or obj_GUI.xPos &lt; 38;
-b = keyboard_check(ord("D")) or obj_GUI.xPos &gt; 38;
-c = keyboard_check(ord("W")) or (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
-d = keyboard_check_pressed(ord("W")) or (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
-e = keyboard_check_released(ord("W")) or (mouse_check_button_released(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
+a = keyboard_check(ord("A")) || xPos &lt; 38;
+b = keyboard_check(ord("D")) || xPos &gt; 38;
+c = keyboard_check(ord("W")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
+d = keyboard_check_pressed(ord("W")) || (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
+e = keyboard_check_released(ord("W")) || (mouse_check_button_released(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
 
 if(b - a != 0){
     sprite_index = spr_characterMove;
@@ -68,7 +112,7 @@ if(b - a != 0){
     hSpeed += 25;
 }
 
-if(!place_free(x,y+1) &amp;&amp; d){
+if((!place_free(x,y+1) || y = room_height-57) &amp;&amp; d){
     vSpeed = -600;
 } else{
     vSpeed += 20;
@@ -81,36 +125,41 @@ if(vSpeed &lt; 0 &amp;&amp; e){
 
 hSpeed = clamp(hSpeed,-400,400);
 vSpeed = clamp(vSpeed,-600,400);
+deltaTime = min(delta_time,1000000/30);
 
 for(i = 0;i &lt; array_length_1d(dieBlocks);i++){
-    if(hp &lt;= 0 or place_meeting(x+hSpeed*(b - a)*(delta_time/1000000),y+vSpeed*(delta_time/1000000),dieBlocks[i])){
+    if(hp &lt;= 0 || place_meeting(x+(b - a),y+sign(vSpeed),dieBlocks[i])){
         x = xstart;
         y = ystart;
+        //move and stop??
         hp = 30;
-    } else{
-        if(!place_free(x+hSpeed*(b - a)*(delta_time/1000000),y)){
-            while(place_free(x + (b - a)/3,y)){
-                x += (b - a)/6;
-            }
-            hSpeed = 0;
-            sprite_index = spr_characterStill;
-        } else{
-            x += hSpeed*(b - a)*(delta_time/1000000);
-        }
-        if(!place_free(x,y+vSpeed*(delta_time/1000000))){
-            while(place_free(x,y+sign(vSpeed)/3)){
-                y += sign(vSpeed)/6;
-            }
-            vSpeed = 0;
-        } else{
-            y += vSpeed*(delta_time/1000000);
-        }
     }
 }
 
+if(tile_exists(tile_layer_find(0,x,y))){
+    tile_delete(tile_layer_find(0,x,y));
+    jewels++;
+}
+
+if(!place_free(x+round(hSpeed*(b - a)*(deltaTime/1000000)),y)){
+    while(place_free(x+(b - a),y)){
+        x += (b - a);
+    }
+    hSpeed = 0;
+}
+if(!place_free(x,y+round(vSpeed*(deltaTime/1000000)))){
+    while(place_free(x,y+sign(vSpeed))){
+        y += sign(vSpeed);
+    }
+    vSpeed = 0;
+}
+
+x += round(hSpeed*(b - a)*(deltaTime/1000000));
+y += round(vSpeed*(deltaTime/1000000));
+
 //stay within room
 x = clamp(x,19-5,room_width-19+5);
-y = clamp(y,19-2,room_height-19);
+y = clamp(y,19-2,room_height-57);
 </string>
           </argument>
         </arguments>
@@ -169,6 +218,8 @@ if(keyboard_check_pressed(vk_shift)){
     }
 }
 
+window_set_position((display_get_width()-window_get_width())/2,30); //allow repositioning?? Move to room??
+
 if(mouse_wheel_up() &amp;&amp; zoomScale &gt; 0.5){
     zoomScale -= 38/608;
 }
@@ -179,13 +230,234 @@ if(mouse_wheel_down() &amp;&amp; zoomScale &lt; 2){
 view_wview = 608 * zoomScale;
 view_hview = 342 * zoomScale;
 
-//follow obj_character
-view_xview = obj_character.x - view_wview/2;
-view_yview = obj_character.y - view_hview/2;
+//follow
+view_xview = x - view_wview/2;
+view_yview = y - view_hview/2;
 
 //cap view
 view_xview = clamp(view_xview,0,room_width-view_wview);
 view_yview = clamp(view_yview,0,room_height-view_hview);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///others
+if(keyboard_check_pressed(vk_left) &amp;&amp; page &gt; 0){
+    page--;
+}
+if(keyboard_check_pressed(vk_right) &amp;&amp; page &lt; 2){
+    page++;
+}
+
+if(keyboard_check_pressed(ord("I"))){
+    inv++;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///quick slots
+for(i = 10*page;i &lt; 10*page+10;i++){
+    draw_sprite(spr_slot,0,228+76*(i-10*page),608);
+    if(keyboard_check_pressed(keyPress[i-10*page])){
+        on = i;
+    }
+    if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),228+76*(i-10*page),608,228+76*(i-10*page)+76,608+76)){
+        if(mouse_check_button_pressed(mb_left) &amp;&amp; on = i){
+            drawOnMouse = true;
+        }
+        if(mouse_check_button_released(mb_left) &amp;&amp; on = i){
+            drawOnMouse = false;
+        }
+        if(mouse_check_button_pressed(mb_any)){
+            on = i;
+        }
+        if(mouse_check_button_pressed(mb_right)){
+            if(on &lt; 2){
+                global.countQuick[on]++;
+            } else if(global.countQuick[on] != 0){ //beating to other slots
+                for(add = 1;add &lt; 18;add++){
+                    if(global.thingsQuick[on+add] == global.thingsQuick[on] || global.countQuick[on+add] == 0){
+                        global.thingsQuick[on+add] = global.thingsQuick[on];
+                        global.countQuick[on+add]++;
+                        global.countQuick[on]--;
+                        break;
+                    }
+                }
+            }
+        }
+        if(mouse_check_button_released(mb_left) &amp;&amp; drawOnMouse &amp;&amp; i &gt; 1 &amp;&amp; on &gt; 1 &amp;&amp; on != i){
+            if(global.thingsQuick[i] == global.thingsQuick[on]){ //combining
+                global.countQuick[i] += global.countQuick[on];
+                global.countQuick[on] = 0;
+            } else{ //swapping
+                storeThings = global.thingsQuick[on];
+                storeCount = global.countQuick[on];
+                global.thingsQuick[on] = global.thingsQuick[i];
+                global.countQuick[on] = global.countQuick[i];
+                global.thingsQuick[i] = storeThings;
+                global.countQuick[i] = storeCount;
+            }
+            on = i;
+            drawOnMouse = false;
+        }
+    }
+    if(global.countQuick[on] == 0 &amp;&amp; on &gt; 1){
+        global.thingsQuick[on] = noone;
+        on = 0;
+    }
+    if(on div 10 == page){
+        draw_sprite(spr_slot,1,228+76*(on-10*page),608);
+    }
+    if(i &lt; 2){
+        if(global.countQuick[i] &amp; 1){
+            draw_sprite_stretched(spr_actions,i*2+1,228+76*i+14,608+17,76/1.5,76/1.5);
+        } else{
+            draw_sprite_stretched(spr_actions,i*2,228+76*i+14,608+17,76/1.5,76/1.5);
+        }
+    }
+    if(i &gt; 1 &amp;&amp; global.countQuick[i] != 0){
+        draw_sprite_stretched(object_get_sprite(global.thingsQuick[i]),0,228+76*(i-10*page)+14,608+17,76/1.5,76/1.5); 
+        draw_set_halign(fa_center);
+        draw_text(228+76*(i-10*page)+38,608,global.countQuick[i]);
+    }
+    if(drawOnMouse &amp;&amp; on &gt; 1 &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),228,608,228+76*10,608+76)){
+        draw_sprite_stretched(object_get_sprite(global.thingsQuick[on]),0,device_mouse_x_to_gui(0) - 19,device_mouse_y_to_gui(0) - 19,76/1.5,76/1.5); 
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///inv###
+if(inv &amp; 1){
+    for(r = 0;r &lt; 7;r++){ //limit on rows
+        for(c = 0;c &lt; 15;c++){ //limit on columns
+            draw_sprite(spr_slot,0,38+76*c,47+76*r);
+            if(global.countInv[c,r] != 0){
+                draw_sprite_stretched(object_get_sprite(global.thingsInv[c,r]),0,38+76*c+14,47+76*r+17,76/1.5,76/1.5);
+                if(global.countInv[c,r] &gt; 1){
+                    draw_set_halign(fa_center);
+                    draw_text(38+76*c+38,47+76*r,global.countInv[c,r]);
+                }
+            }
+            if(mouse_check_button_pressed(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38+76*c,47+76*r,38+76*c+76,47+76*r+76)){
+                onColumn = c;
+                onRow = r;
+            }
+            draw_sprite(spr_slot,1,38+76*onColumn,47+76*onRow);
+        }
+    }
+}
+/*          if(mouse_check_button(mb_left) &amp;&amp; global.thingsInv[onColumn,onRow] != noone &amp;&amp; on &lt; 2){
+                invOnMouse = true;
+                draw_sprite_stretched(object_get_sprite(global.thingsInv[onColumn,onRow]),0,device_mouse_x_to_gui(0)-19,device_mouse_y_to_gui(0)-19,76/1.5,76/1.5);
+            } else{
+                invOnMouse = false;
+                draw_sprite_stretched(object_get_sprite(global.thingsInv[c,r]),0,38+76*c+14,47+76*r+17,76/1.5,76/1.5);
+            }
+                    if(mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38+76*c,47+76*r,38+76*c+76,47+76*r+76)){
+            if(invOnMouse){
+                global.thingsInv[c,r] = global.thingsInv[onColumn,onRow];
+                global.countInv[c,r] = global.countInv[onColumn,onRow];
+                global.thingsInv[c,r] = noone;
+                global.countInv[c,r] = 0;
+            } else if(quickOnMouse){
+                global.thingsInv[c,r] = global.thingsQuick[on];
+                global.countInv[c,r] = global.countQuick[on];
+                global.thingsQuick[on] = noone;
+                global.countQuick[on] = 0;
+            }
+        }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///other GUI
+for(i = 0;i &lt; hp;i++){
+    draw_sprite(spr_heart,0,38*i,0);
+} 
+
+draw_sprite(spr_jewel,0,1216-38,0);
+draw_set_halign(fa_right);
+draw_text(1216-38,19/2,jewels);
+
+if(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,0+152,608+76)){  
+    xPos = device_mouse_x_to_gui(0) div 76*76;   
+} else{
+    xPos = 38;
+}
+
+draw_sprite(spr_upDown,2,1064,608);
+draw_sprite(spr_upDown,3,1140,608);
+draw_sprite(spr_moveBar,0,0,608);
+draw_sprite(spr_moveBall,0,xPos,608); 
 </string>
           </argument>
         </arguments>

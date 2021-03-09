@@ -48,18 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_free(round(x),round(y+vSpeed*(delta_time/1000000)))){
-    vSpeed += 10;
-}
-        
-if(!place_free(round(x),round(y+vSpeed*(delta_time/1000000)))){
-    while(place_free(round(x),round(y)+sign(vSpeed))){
-        y += sign(vSpeed);
-    }
-    vSpeed = 0;
-}
-
-y += round(vSpeed*(delta_time/1000000));
+            <string>///script
+scr_drop_step();
 </string>
           </argument>
         </arguments>

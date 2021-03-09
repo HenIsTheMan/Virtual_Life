@@ -275,12 +275,12 @@ if(inv &amp; 1){
             <kind>1</kind>
             <string>///other GUI
 for(i = 0;i &lt; obj_character.hp;i++){
-    draw_sprite(spr_heart,0,0+38*i,0);
-}  
+    draw_sprite(spr_heart,0,38*i,0);
+} 
 
 draw_sprite(spr_jewel,0,1216-38,0);
 draw_set_halign(fa_right);
-draw_text(1216-38,19/2,global.jewels);
+draw_text(1216-38,19/2,obj_character.jewels);
 
 if(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,0+152,608+76)){  
     xPos = device_mouse_x_to_gui(0) div 76*76;   

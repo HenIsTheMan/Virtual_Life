@@ -10,18 +10,10 @@
       <sprite>sprites\spr_soil</sprite>
       <sprite>sprites\spr_infectiousSoil</sprite>
       <sprite>sprites\spr_lava</sprite>
-      <sprite>sprites\spr_bedrock</sprite>
       <sprite>sprites\spr_mole</sprite>
       <sprite>sprites\spr_chomper</sprite>
       <sprite>sprites\spr_bomb</sprite>
       <sprite>sprites\spr_platform</sprite>
-    </sprites>
-    <sprites name="GUI">
-      <sprite>sprites\spr_slot</sprite>
-      <sprite>sprites\spr_actions</sprite>
-      <sprite>sprites\spr_moveBar</sprite>
-      <sprite>sprites\spr_moveBall</sprite>
-      <sprite>sprites\spr_upDown</sprite>
     </sprites>
     <sprites name="others">
       <sprite>sprites\spr_characterStill</sprite>
@@ -29,19 +21,35 @@
       <sprite>sprites\spr_wings</sprite>
       <sprite>sprites\spr_jewel</sprite>
       <sprite>sprites\spr_cracks</sprite>
-      <sprite>sprites\spr_rangeBox</sprite>
       <sprite>sprites\spr_heart</sprite>
-      <sprite>sprites\spr_infinite</sprite>
+      <sprite>sprites\spr_rangeBox</sprite>
+      <sprite>sprites\spr_slot</sprite>
+      <sprite>sprites\spr_actions</sprite>
+      <sprite>sprites\spr_moveBar</sprite>
+      <sprite>sprites\spr_moveBall</sprite>
+      <sprite>sprites\spr_upDown</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\tile_jewel</background>
+    <background>background\tile_bedrock</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_normal_create.gml</script>
+    <script>scripts\scr_normal_step.gml</script>
+    <script>scripts\scr_normal_draw.gml</script>
+    <script>scripts\scr_infectiousSoil_alarm0.gml</script>
+    <script>scripts\scr_mole_alarm0.gml</script>
+    <script>scripts\scr_drop_step.gml</script>
+    <script>scripts\scr_platform_step.gml</script>
+    <script>scripts\scr_rangeBox_step.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="items">
       <object>objects\obj_soil</object>
-      <object>objects\obj_infectiousSoil</object>
       <object>objects\obj_lava</object>
-      <object>objects\obj_bedrock</object>
+      <object>objects\obj_infectiousSoil</object>
       <object>objects\obj_mole</object>
       <object>objects\obj_chomper</object>
       <object>objects\obj_bomb</object>
@@ -49,8 +57,6 @@
     </objects>
     <objects name="others">
       <object>objects\obj_character</object>
-      <object>objects\obj_jewel</object>
-      <object>objects\obj_GUI</object>
       <object>objects\obj_rangeBox</object>
       <object>objects\obj_textBox</object>
     </objects>

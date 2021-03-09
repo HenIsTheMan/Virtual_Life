@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if(place_meeting(x,y,obj_character)){
     instance_destroy();
-    global.jewels++;
+    obj_character.jewels++;
 }
 </string>
           </argument>
