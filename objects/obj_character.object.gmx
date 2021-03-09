@@ -36,10 +36,8 @@ hSpeed = 0;
 vSpeed = 0;
 zoomScale = 1;
 
-for(i = 0;i &lt; 36;i++){
-    global.thingsQuick[i] = noone;
-    global.countQuick[i] = 0;
-}
+global.thingsQuick = array_create(36);
+global.countQuick = array_create(36);
 
 for(r = 0;r &lt; 7;r++){
     for(c = 0;c &lt; 15;c++){
@@ -300,6 +298,12 @@ view_yview = clamp(view_yview,0,room_height-view_hview);
           <argument>
             <kind>1</kind>
             <string>///others
+if(point_in_rectangle(display_mouse_get_x(),display_mouse_get_y(),window_get_x(),window_get_y(),window_get_x()+window_get_width(),window_get_y()+window_get_height())){
+    cursor_sprite = spr_cursor;
+} else{
+    cursor_sprite = -1;
+}
+
 if(keyboard_check_pressed(vk_left) &amp;&amp; page &gt; 0){
     page--;
     if(!drawOnCursor){
@@ -416,7 +420,7 @@ for(i = 12*page;i &lt; 12*page+12;i++){
         }
     }
     if(on % 12 &gt; 1 &amp;&amp; global.countQuick[on] == 0){
-        global.thingsQuick[on] = noone;
+        global.thingsQuick[on] = 0;
         on = 12*page;
     }
     if(on div 12 == page){
@@ -434,7 +438,7 @@ for(i = 12*page;i &lt; 12*page+12;i++){
         draw_set_halign(fa_center);
         draw_text(152+76*(i-12*page)+38,608,global.countQuick[i]);
     }
-    if(mouse_check_button_pressed(mb_right) &amp;&amp; global.thingsQuick[on] != noone &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(on-12*page),608,152+76*(on-12*page)+76,608+76)){
+    if(mouse_check_button_pressed(mb_right) &amp;&amp; global.thingsQuick[on] != 0 &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(on-12*page),608,152+76*(on-12*page)+76,608+76)){
         drawOnCursor = 1;
     } else if(mouse_check_button_released(mb_right)){
         drawOnCursor = 0;
