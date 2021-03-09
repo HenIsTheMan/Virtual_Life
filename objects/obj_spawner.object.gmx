@@ -76,8 +76,8 @@ scr_spawner_alarm0();
             <string>///script and...
 scr_rotate_step();
 
-if(mouse_check_button(mb_right) &amp;&amp; position_meeting(mouse_x,mouse_y,self) &amp;&amp; obj_character.on % 12 &gt; 1 &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152,608,152+76*12,608+76)){
-    item = global.thingsQuick[obj_character.on];
+if(mouse_check_button(mb_right) &amp;&amp; position_meeting(mouse_x,mouse_y,self) &amp;&amp; global.on % 12 &gt; 1 &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152,608,152+76*12,608+76)){
+    item = global.items[| global.on];
     alarm[0] = 1000000/delta_time;
 }
 </string>

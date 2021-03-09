@@ -26,44 +26,40 @@
           <argument>
             <kind>1</kind>
             <string>bounce = 0;
-state = noone;
+state = states.normal;
 jewels = 0;
 jewelsAdded = 0;
 jewelsToBeAdded = 0;
+taps = 0;
+time = 0;
+keys = array_create(3);
 eq = 0;
 hp = 30;
 hSpeed = 0;
 vSpeed = 0;
 zoomScale = 1;
 
-global.thingsQuick = array_create(36);
-global.countQuick = array_create(36);
+global.items = ds_list_create();
+global.items[| 0] = "set1";
+global.items[| 1] = "set2";
+global.items[| 2] = obj_soil;
+global.items[| 3] = obj_lava;
+global.items[| 4] = obj_infectiousSoil;
+global.items[| 5] = obj_platform;
+global.items[| 6] = obj_mole;
+global.items[| 7] = obj_blackHole;
+global.items[| 8] = obj_bomb;
+global.items[| 9] = obj_spawner;
+global.items[| 10] = obj_chomper;
+global.items[| 11] = obj_homingMissile;
+global.items[| 12] = obj_ball;
 
-for(r = 0;r &lt; 7;r++){
-    for(c = 0;c &lt; 15;c++){
-        global.thingsInv[c,r] = noone;
-        global.countInv[c,r] = 0;
+global.amts = ds_map_create();
+for(i = 0; i &lt; 36; i++){
+    if(!is_undefined(global.items[| i])){
+        global.amts[? global.items[| i]] = 999;
     }
 }
-
-global.thingsQuick[2] = obj_ball;
-global.countQuick[2] = 100;
-global.thingsQuick[3] = obj_spawner;
-global.countQuick[3] = 100;
-global.thingsQuick[4] = obj_homingMissile;
-global.countQuick[4] = 999;
-global.thingsQuick[5] = obj_infectiousSoil;
-global.countQuick[5] = 100;
-global.thingsQuick[6] = obj_chomper;
-global.countQuick[6] = 100;
-global.thingsQuick[7] = obj_platform;
-global.countQuick[7] = 100;
-global.thingsQuick[8] = obj_explodingMole;
-global.countQuick[8] = 100;
-global.thingsQuick[9] = obj_bomb;
-global.countQuick[9] = 100;
-global.thingsQuick[10] = obj_soil;
-global.countQuick[10] = 999;
 
 keyPress[0] = ord('0');
 keyPress[1] = ord('1');
@@ -78,11 +74,8 @@ keyPress[9] = ord('9');
 keyPress[10] = ord("Z");
 keyPress[11] = ord("X");
 
-inv = 0;
-on = 0;
+global.on = 0;
 page = 0;
-onColumn = 0;
-onRow = 0;
 drawOnCursor = 0;
 </string>
           </argument>
@@ -137,11 +130,13 @@ drawOnCursor = 0;
           <argument>
             <kind>1</kind>
             <string>///movement and collisions
-xPos = device_mouse_x_to_gui(0) * (mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,152,608+76)) div 76 * 76 + 38 * !(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,152,608+76));
-a = keyboard_check(ord("A")) || xPos &lt; 38;
-b = keyboard_check(ord("D")) || xPos &gt; 38;
+a = keyboard_check(ord("A")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38,646,38));
+b = keyboard_check(ord("D")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),114,646,38));
 c = keyboard_check(ord("W")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
-d = keyboard_check_pressed(ord("W")) || (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
+d = keyboard_check(ord("S")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38));
+e = keyboard_check_pressed(ord("A")) || (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38,646,38));
+f = keyboard_check_pressed(ord("D")) || (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),114,646,38));
+g = keyboard_check_pressed(ord("W")) || (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
 
 image_speed = delta_time/1000000;
 
@@ -151,38 +146,45 @@ if(b - a != 0){
     hSpeed += 25;
 }
 
-if(!place_free(x,y+1) &amp;&amp; d){
+if(!place_free(x,y+1) &amp;&amp; g){
     vSpeed = -600;
-} else{
-    vSpeed += 20;
-}
-if(vSpeed &lt; 0 &amp;&amp; !c){
+} else if(vSpeed &lt; 0 &amp;&amp; !c){
     vSpeed = 0; 
+} else if(place_free(x,y)){
+    vSpeed += 20;
 }
 
 hSpeed = clamp(hSpeed,-400,400);
 vSpeed = clamp(vSpeed,-600,400);
 deltaTime = min(delta_time,1000000/30);
 
-//phase (can be upgraded)
-if(!place_free(x,y+1) &amp;&amp; (keyboard_check(ord("S")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38)))){
-    vSpeed = 100;
+time++;
+if(time = 20){
+    taps = 0;
+} //delta_time?? //state??
+
+if(taps &lt; 2 &amp;&amp; f - e != 0){
+    taps++;
+    keys[taps] = f - e;
+    time = 0;
+    if(taps = 2 &amp;&amp; path_index == -1 &amp;&amp; keys[1] = keys[2]){
+        if(keyboard_check(ord("U"))){
+            move_contact_solid(90 - 90*(f - e),room_width);
+        } else{
+            move_contact_solid(90 - 90*(f - e),76);
+        }
+        hSpeed = 0;
+        taps = 0;
+    }
 }
 
-if(mouse_check_button_pressed(mb_middle) &amp;&amp; !place_free(x+(b - a),y) &amp;&amp; place_free(x+76*(b - a),y) &amp;&amp; path_index == -1){
-    path = path_add();
-    path_add_point(path,x,y,100);
-    path_add_point(path,x+76*(b - a),y,100);
-    path_set_closed(path,false);
-    path_start(path,round(200*deltaTime/1000000),"",true); 
-}
-
-if(mouse_check_button_pressed(mb_middle) &amp;&amp; !place_free(x,y+sign(vSpeed)) &amp;&amp; place_free(x,y+76*sign(vSpeed)) &amp;&amp; path_index == -1 &amp;&amp; (vSpeed = 100 || vSpeed &lt; 0)){
-    path = path_add();
-    path_add_point(path,x,y,100);
-    path_add_point(path,x,y+76*sign(vSpeed),100);
-    path_set_closed(path,false);
-    path_start(path,round(200*deltaTime/1000000),"",true); 
+if(mouse_check_button_pressed(mb_middle) &amp;&amp; path_index == -1){
+    if(!place_free(x+(b - a),y) &amp;&amp; place_free(x+76*(b - a),y)){
+        state = states.xPhase;
+    }
+    if(!place_free(x,y+(d - c)) &amp;&amp; place_free(x,y+76*(d - c))){
+        state = states.yPhase;
+    }
 }
 
 if(bounce &amp; 1){
@@ -195,40 +197,17 @@ if(hp &lt;= 0 || place_meeting(x+(b - a),y,obj_lava) || place_meeting(x,y+sign(v
     state = states.die;
 }
 
-switch(state){
-    case states.bounce: scr_character_bounce(); state = noone; break;
-    case states.die: scr_character_die(); break;
-    case noone: scr_character_normal(); break;
+if(distance_to_object(obj_blackHole) &lt;= sqrt(2) &amp;&amp; state != states.die){
+    state = states.suck;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///rangeBoxes
-for(xOffset = -76;xOffset &lt; 114;xOffset += 38){
-    for(yOffset = -76;yOffset &lt; 114;yOffset += 38){
-        if(instance_number(obj_rangeBox) &lt; 25){
-            rangeBoxCreate = instance_create(x div 38 * 38 + xOffset,y div 38 * 38 + yOffset,obj_rangeBox);
-            rangeBoxCreate.xOffset = xOffset;
-            rangeBoxCreate.yOffset = yOffset;
-        }
-    }
+
+switch(state){
+    case states.xPhase: scr_character_xPhase(); state = states.normal; break;
+    case states.yPhase: scr_character_yPhase(); state = states.normal; break;
+    case states.bounce: scr_character_bounce(); state = states.normal; break;
+    case states.die: scr_character_die(); break;
+    case states.suck: scr_character_suck(); break;
+    case states.normal: scr_character_normal(); break;
 }
 </string>
           </argument>
@@ -302,27 +281,26 @@ if(point_in_rectangle(display_mouse_get_x(),display_mouse_get_y(),window_get_x()
     cursor_sprite = -1;
 }
 
-if(keyboard_check_pressed(vk_left) &amp;&amp; page &gt; 0){
+if(keyboard_check_pressed(ord("J")) &amp;&amp; page &gt; 0){
     page--;
     if(!drawOnCursor){
-        on = 12*page;
+        global.on = 12*page;
     }
 }
-if(keyboard_check_pressed(vk_right) &amp;&amp; page &lt; 2){
+if(keyboard_check_pressed(ord("L")) &amp;&amp; page &lt; 2){
     page++;
     if(!drawOnCursor){
-        on = 12*page;
+        global.on = 12*page;
     }
 }
 
-if(keyboard_check_pressed(ord("I"))){
-    inv++;
+if(keyboard_check_pressed(ord("P"))){
+    eq++;
 }
 
-if(keyboard_check_pressed(ord("B"))){
+if(keyboard_check_pressed(ord("B")) &amp;&amp; path_index == -1){
     bounce++;
 }
-
 </string>
           </argument>
         </arguments>
@@ -350,12 +328,13 @@ for(i = 0;i &lt; hp;i++){
     draw_sprite(spr_heart,0,38*i,0);
 }
 
+draw_set_halign(fa_right);
 draw_sprite(spr_jewel,0,1216-38,0);
 draw_text(1216-38,10,jewels);
-draw_sprite_ext(spr_buttons,0,1064,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38)) + 0.7);
-draw_sprite_ext(spr_buttons,1,1140,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38)) + 0.7);
-draw_sprite(spr_moveBar,0,0,608);
-draw_sprite(spr_moveBall,0,xPos,608); 
+draw_sprite_ext(spr_buttons,0,0,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38,646,38)) + 0.7);
+draw_sprite_ext(spr_buttons,1,76,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),114,646,38)) + 0.7);
+draw_sprite_ext(spr_buttons,2,1064,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38)) + 0.7);
+draw_sprite_ext(spr_buttons,3,1140,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38)) + 0.7);
 </string>
           </argument>
         </arguments>
@@ -376,98 +355,55 @@ draw_sprite(spr_moveBall,0,xPos,608);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///quick slots
+            <string>///inv
 for(i = 12*page;i &lt; 12*page+12;i++){
     draw_sprite(spr_slot,0,152+76*(i-12*page),608);
     if(keyboard_check_pressed(keyPress[i-12*page])){
-        on = i;
+        global.on = i;
     }
     if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(i-12*page),608,152+76*(i-12*page)+76,608+76)){
         if(mouse_check_button_pressed(mb_any)){
-            on = i;
+            global.on = i;
         }
-        if(mouse_check_button_pressed(mb_right) &amp;&amp; on % 12 &lt; 2){
-            global.countQuick[on]++;
+        if(mouse_check_button_pressed(mb_right) &amp;&amp; global.on % 12 &lt; 2){
+            global.amts[? global.items[| global.on]]++;
         }
-        if(mouse_check_button_released(mb_right) &amp;&amp; i % 12 &gt; 1 &amp;&amp; on % 12 &gt; 1){
-            storeThings = global.thingsQuick[on];
-            storeCount = global.countQuick[on];
-            global.thingsQuick[on] = global.thingsQuick[i];
-            global.countQuick[on] = global.countQuick[i];
-            global.thingsQuick[i] = storeThings;
-            global.countQuick[i] = storeCount;
-            on = i;
+        if(mouse_check_button_released(mb_right) &amp;&amp; i % 12 &gt; 1 &amp;&amp; global.on % 12 &gt; 1){
+            item = global.items[| global.on];
+            global.items[| global.on] = global.items[| i];
+            global.items[| i] = item;
+            global.on = i;
         }
     }
-    if(on % 12 &gt; 1 &amp;&amp; global.countQuick[on] == 0){
-        global.thingsQuick[on] = 0;
-        on = 12*page;
+    if(global.on % 12 &gt; 1 &amp;&amp; global.amts[? global.items[| global.on]] == 0){
+        ds_list_delete(global.items, global.on);
+        global.on = 12*page;
     }
-    if(on div 12 == page){
-        draw_sprite(spr_slot,1,152+76*(on-12*page),608);
+    if(global.on div 12 == page){
+        draw_sprite(spr_slot,1,152+76*(global.on-12*page),608);
     }
     if(i % 12 &lt; 2){
-        if(global.countQuick[i] &amp; 1){
-            draw_sprite_stretched(spr_actions,(i-12*page)*2+1,152+76*(i-12*page)+9.5,608+9.5,57,57);
-        } else{
+        if(global.amts[? global.items[| i]] &amp; 1){
             draw_sprite_stretched(spr_actions,(i-12*page)*2,152+76*(i-12*page)+9.5,608+9.5,57,57);
+        } else{
+            draw_sprite_stretched(spr_actions,(i-12*page)*2+1,152+76*(i-12*page)+9.5,608+9.5,57,57);
         }
     }
-    if(i % 12 &gt; 1 &amp;&amp; global.countQuick[i] != 0){
-        draw_sprite_stretched(object_get_sprite(global.thingsQuick[i]),0,152+76*(i-12*page)+10.25,608+14.75,57,57); 
+    if(!is_undefined(global.items[| i]) &amp;&amp; global.amts[? global.items[| i]] &gt; 0 &amp;&amp; i % 12 &gt; 1){
         draw_set_halign(fa_center);
-        draw_text(152+76*(i-12*page)+38,608,global.countQuick[i]);
+        draw_sprite_stretched(object_get_sprite(global.items[| i]),0,152+76*(i-12*page)+10.25,608+14.75,57,57);
+        draw_text(152+76*(i-12*page)+38,608,global.amts[? global.items[| i]]);
     }
-    if(mouse_check_button_pressed(mb_right) &amp;&amp; global.thingsQuick[on] != 0 &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(on-12*page),608,152+76*(on-12*page)+76,608+76)){
+    if(!is_undefined(global.items[| global.on]) &amp;&amp; mouse_check_button_pressed(mb_right) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(global.on-12*page),608,152+76*(global.on-12*page)+76,608+76)){
         drawOnCursor = 1;
     } else if(mouse_check_button_released(mb_right)){
         drawOnCursor = 0;
-        if(on div 12 != page &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),304,608,304+76*10,608+76)){
-            on = 12*page;
-        }
+        if(global.on div 12 != page &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),304,608,304+76*10,608+76)){
+            global.on = 12*page;
+        } //for??
     }
     if(drawOnCursor &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152,608,152+76*12,608+76)){
-        draw_sprite_stretched(object_get_sprite(global.thingsQuick[on]),0,device_mouse_x_to_gui(0)-57/2,device_mouse_y_to_gui(0)-57/2,57,57);     
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///inv
-if(inv &amp; 1){
-    for(r = 0;r &lt; 7;r++){ //limit on rows
-        for(c = 0;c &lt; 15;c++){ //limit on columns
-            draw_sprite(spr_slot,0,38+76*c,47+76*r);
-            if(global.countInv[c,r] != 0){
-                draw_sprite_stretched(object_get_sprite(global.thingsInv[c,r]),0,38+76*c+14,47+76*r+17,76/1.5,76/1.5);
-                if(global.countInv[c,r] &gt; 1){
-                    draw_set_halign(fa_center);
-                    draw_text(38+76*c+38,47+76*r,global.countInv[c,r]);
-                }
-            }
-            if(mouse_check_button_pressed(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38+76*c,47+76*r,38+76*c+76,47+76*r+76)){
-                onColumn = c;
-                onRow = r;
-            }
-            draw_sprite(spr_slot,1,38+76*onColumn,47+76*onRow);
-        }
+        draw_sprite_stretched(object_get_sprite(global.items[| global.on]),0,device_mouse_x_to_gui(0)-57/2,device_mouse_y_to_gui(0)-57/2,57,57);     
     }
 }
 </string>
@@ -492,16 +428,19 @@ if(inv &amp; 1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///eq
-draw_self();
-if(keyboard_check_pressed(ord("P"))){
-    eq++;
-}
-
+            <string>draw_self();
 if(eq &amp; 1){
     draw_sprite(spr_wings,0,x,y);
     if(c){
         vSpeed = -400; //can be upgraded
+    }
+}
+
+if(global.on % 12 &gt; 1 &amp;&amp; place_empty(mouse_x div 38 * 38 + 19,mouse_y div 38 * 38 + 19) &amp;&amp; !collision_rectangle(mouse_x div 38 * 38,mouse_y div 38 * 38,mouse_x div 38 * 38 + 38,mouse_y div 38 * 38 +38,self,0,0) &amp;&amp; point_in_rectangle(mouse_x,mouse_y,(x - 76) div 38 * 38,(y - 76) div 38 * 38,(x - 76) div 38 * 38 + 189,(y - 76) div 38 * 38 + 189)){
+    draw_sprite_ext(global.items[| global.on],0,mouse_x div 38 * 38,mouse_y div 38 * 38,1,1,0,-1,0.3);
+    if(mouse_check_button(mb_left)){
+        instance_create(mouse_x div 38 * 38,mouse_y div 38 * 38,global.items[| global.on]);
+        global.amts[? global.items[| global.on]]--;
     }
 }
 </string>
