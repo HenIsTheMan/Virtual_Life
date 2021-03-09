@@ -10,8 +10,7 @@
   <persistent>-1</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>//display_set_gui_maximise(view_wview,view_hview);
-display_set_gui_size(display_get_gui_width(),display_get_gui_height());
+  <code>//display_set_gui_maximise();
 instance_create(x,y,obj_GUI);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>

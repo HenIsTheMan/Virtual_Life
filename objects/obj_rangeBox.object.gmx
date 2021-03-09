@@ -51,8 +51,11 @@ yPos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = (((player.x+19)/*centralise pos*/+(xPos*38)) div 38)*38;
-y = (((player.y+19)+(yPos*38)) div 38)*38;
+            <string>var xPlayerPos = ((player.x+19) div 38);
+var yPlayerPos = ((player.y+19) div 38);
+
+x = (xPos + xPlayerPos)*38;
+y = (yPos + yPlayerPos)*38;
 
 if(!place_free(x,y) or obj_GUI.on &lt; 2){
     visible = false;

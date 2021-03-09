@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0;i &lt; 22;i++){
+            <string>display_set_gui_size(display_get_gui_width(),display_get_gui_height());
+for(i = 0;i &lt; 22;i++){
     global.thingsQuick[i] = noone;
     global.countQuick[i] = 0;
     if(global.countQuick[i] = 0){
@@ -144,7 +145,7 @@ if(page = 0){
     for(i = 0;i &lt; 6;i++){
     draw_sprite(spr_mainButtons,i,200+76*(10-i),y+10);
     }
-    if(mouse_check_button_pressed(mb_left) &amp;&amp; point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),200+76*10,y+10,200+76*10+56,y+10+56)){
+    if(mouse_check_button_pressed(mb_left) &amp;&amp; point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),200+76*10,y+10,200+76*10+display_get_gui_width(),y+10+display_get_gui_height())){
         room_goto(MENU);
     }
 }

@@ -149,10 +149,6 @@ for(xChange = -2;xChange &lt; 3;xChange++){
     for(yChange = -2;yChange &lt; 3;yChange++){
         if(instance_number(obj_rangeBox) = 25){
             break;
-        } else if(place_meeting((((x+19)+(xChange*38)) div 38)*38,(((y+19)+(yChange*38)) div 38)*38,obj_rangeBox)){
-            with(obj_rangeBox){
-                instance_destroy(id,true);
-            }
         } else{
             var rangeBoxCreate = instance_create((((x+19)+(xChange*38)) div 38)*38,(((y+19)+(yChange*38)) div 38)*38,obj_rangeBox);
             rangeBoxCreate.xPos = xChange;
@@ -201,7 +197,7 @@ view_xview = obj_character.x - view_wview/2+19;
 view_yview = obj_character.y - view_hview/2+19;
 
 // cap bottom
-/*view_yview = min(view_yview,room_height-view_hview);
+view_yview = min(view_yview,room_height-view_hview);
 // cap left (if view_xview exits room, it becomes negative and it &lt; 0 so view_xview = 0 instead of..., preventing...)
 view_xview = max(view_xview,0);
 // cap right (if view_xview exits room, room_width-view_wview &lt; view_xview so view_xview = room_width-view_wview instead of..., preventing...)
@@ -232,6 +228,7 @@ view_yview = max(view_yview,0);
             <kind>1</kind>
             <string>if(window_get_fullscreen()){
     window_set_fullscreen(false);
+    window_set_position(0,0);
 } else{
     window_set_fullscreen(true);
 }
