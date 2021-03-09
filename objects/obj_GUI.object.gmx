@@ -52,7 +52,7 @@ on = 0;
 page = 0;
 onColumn = 0;
 onRow = 0;
-draw = false;
+drawOnMouse = false;
 xDraw = 0;
 yDraw = 0;
 </string>
@@ -78,6 +78,10 @@ yDraw = 0;
           <argument>
             <kind>1</kind>
             <string>///nextPage &amp;&amp; inventory
+if(global.countQuick[obj_GUI.on] = 0){
+    global.thingsQuick[obj_GUI.on] = noone;
+}
+
 if(mouse_check_button_pressed(mb_left)){
     if(page &gt; 0 &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),228,608,228+38,608+76)){
         page--;
@@ -122,7 +126,7 @@ for(i = 9*page;i &lt; 9+9*page;i++){
     draw_sprite(spr_slot,0,266+76*(i-9*page),608);
     if(mouse_check_button_pressed(mb_any) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76) /*or keyboard_check_pressed(key_press[i])*/){
         if(mouse_check_button_pressed(mb_left)){
-            draw = true;
+            drawOnMouse = true;
         }
         if(on = i &amp;&amp; on &lt; 2 &amp;&amp; mouse_check_button_pressed(mb_left)){
             global.countQuick[on]++;
@@ -143,29 +147,33 @@ for(i = 9*page;i &lt; 9+9*page;i++){
                 }
             }
         }
-    } else if(i &gt; 1 &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76) &amp;&amp; global.countQuick[i] = 0){
-        draw = false;
-        global.thingsQuick[i] = global.thingsQuick[on];
-        global.countQuick[i] = global.countQuick[on];
-        if(i != on){
+    } else if(i &gt; 1 &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76)){
+        drawOnMouse = false;
+        if(global.countQuick[i] = 0){
+            global.thingsQuick[i] = global.thingsQuick[on];
+            global.countQuick[i] = global.countQuick[on];
+        } else if(global.thingsQuick[i] = global.thingsQuick[on] &amp;&amp; i != on/*this so release in same slot won't add countQuick*/){
+            global.countQuick[i] += global.countQuick[on];
+        }
+        if(i != on &amp;&amp; global.thingsQuick[i] = global.thingsQuick[on]){
             global.thingsQuick[on] = noone;
             global.countQuick[on] = 0;
         }
     } else if(mouse_check_button_released(mb_left) &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76)){
-        draw = false;
+        drawOnMouse = false;
     }
     if(global.countQuick[on] = 0 &amp;&amp; on &gt; 1){
         on = 0;
     }
     draw_sprite(spr_slot,1,266+76*(on-9*page),608);
-    if(i &gt; 1 &amp;&amp; global.thingsQuick[i] != noone){
+    if(i &gt; 1 &amp;&amp; global.countQuick[i] != 0){
         draw_sprite_stretched(object_get_sprite(global.thingsQuick[i]),0,266+76*(i-9*page)+14,608+17,sprite_width/1.5,sprite_height/1.5); 
         if(global.countQuick[i] &gt; 1){
             draw_set_halign(fa_center);
             draw_text(266+76*(i-9*page)+38,608,global.countQuick[i]);
         }
     } 
-    if(on &gt; 1 &amp;&amp; global.countQuick[on] != 0 &amp;&amp; draw){
+    if(on &gt; 1 &amp;&amp; global.countQuick[on] != 0 &amp;&amp; drawOnMouse){
         draw_sprite_stretched(object_get_sprite(global.thingsQuick[on]),0,device_mouse_x_to_gui(0) - 19,device_mouse_y_to_gui(0) - 19,sprite_width/1.5,sprite_height/1.5); 
     }
     if(i &lt; 2){

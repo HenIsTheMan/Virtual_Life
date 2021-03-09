@@ -259,7 +259,6 @@ if(keyboard_check_pressed(ord("W"))){
     case true: global.wings = false; break;
     case false: global.wings = true; break;
     }
-    return 0;
 }
 if(global.wings){
     draw_sprite(spr_wings,0,x,y);

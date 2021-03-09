@@ -37,7 +37,7 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <objects name="Done">
+    <objects name="items">
       <object>objects\obj_soil</object>
       <object>objects\obj_infectiousSoil</object>
       <object>objects\obj_lava</object>
@@ -45,13 +45,13 @@
       <object>objects\obj_mole</object>
       <object>objects\obj_chomper</object>
       <object>objects\obj_bomb</object>
-      <object>objects\obj_rangeBox</object>
-      <object>objects\obj_textBox</object>
-      <object>objects\obj_jewel</object>
-      <object>objects\obj_character</object>
     </objects>
     <objects name="others">
+      <object>objects\obj_character</object>
+      <object>objects\obj_jewel</object>
       <object>objects\obj_GUI</object>
+      <object>objects\obj_rangeBox</object>
+      <object>objects\obj_textBox</object>
     </objects>
   </objects>
   <rooms name="rooms">

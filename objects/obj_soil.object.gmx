@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>bHealth = 5;
 counting = 0;
+checkEmpty = false;
 </string>
           </argument>
         </arguments>
@@ -106,13 +107,18 @@ if(bHealth = 0 or counting = 5){
     } 
     if(global.countQuick[0] % 2 = 0){//why cannot &amp; !1?
         for(i = 2;i &lt; 18;i++){
-            if(global.countQuick[i] = 0){//if bottomBar slot is empty
+            if(global.thingsQuick[i] = obj_soil){
+                global.countQuick[i]++;
+                break;
+            } else if(i = 17 &amp;&amp; global.thingsQuick[i] != obj_soil){
+                checkEmpty = true;
+                i = 2;
+            }
+            if(global.countQuick[i] = 0 &amp;&amp; checkEmpty){//if bottomBar slot is empty
                 global.thingsQuick[i] = obj_soil;//assign soil block as the thing in bottomBar slot
                 global.countQuick[i]++;//add to no. of soil blocks in bottomBar slot
                 break;//stop loop early so only fill 1 bottomBar slot
-            } else if(global.thingsQuick[i] = obj_soil){
-                global.countQuick[i]++;
-                break;
+                checkEmpty = false;
             }
         }
    }
