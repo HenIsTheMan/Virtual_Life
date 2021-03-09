@@ -10,13 +10,12 @@
   <persistent>-1</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>//display_set_gui_maximise();
-display_set_gui_size(-1,-1);
-instance_create(x,y,obj_GUI);
-instance_create(x,y,obj_cursor);</code>
+  <code>display_set_gui_maximise();
+//display_set_gui_size(-1,-1);
+instance_create(x,y,obj_GUI);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
-  <clearDisplayBuffer>-1</clearDisplayBuffer>
+  <clearDisplayBuffer>0</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
@@ -100,7 +99,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="-38" y="3724" name="inst_024B1C47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="-38" y="3762" name="inst_2F5C2876" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="-38" y="3800" name="inst_45EAE96C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="3838" y="3838" name="inst_E6AB3D7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="3800" name="inst_68C73541" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="3762" name="inst_E1B9FFC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="3724" name="inst_251D50FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -113,7 +111,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="3838" y="3458" name="inst_D4FFC82B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="3420" name="inst_D7EC412C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="3382" name="inst_6540CBEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="3838" y="3344" name="inst_DC67AA09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="2888" name="inst_9601ECF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="2926" name="inst_FFD7969C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3838" y="3192" name="inst_745A7A9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -436,8 +433,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3230" y="3458" name="inst_1175E1FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3458" name="inst_DDE00D33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3458" name="inst_02CB6971" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3458" name="inst_1E82BE92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3496" name="inst_E70007ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3382" y="3496" name="inst_3791F93A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3420" y="3496" name="inst_9C8E8719" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3458" y="3496" name="inst_14456E11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -617,7 +612,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3230" y="3496" name="inst_53043106" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3496" name="inst_921DFA79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3534" name="inst_CEC86C87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3534" name="inst_9E6D50E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3382" y="3534" name="inst_4C7071E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3420" y="3534" name="inst_DCC79DF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2850" y="3496" name="inst_88571141" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -807,10 +801,8 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3230" y="3572" name="inst_E7366005" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3572" name="inst_1D8F8B6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3572" name="inst_CB707653" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3572" name="inst_07C0FFB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3382" y="3572" name="inst_21D790DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3382" y="3610" name="inst_DEA8A7EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3610" name="inst_22144E60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3610" name="inst_48CD9487" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3610" name="inst_150CD4B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3230" y="3610" name="inst_B677ECCC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -840,7 +832,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3230" y="3648" name="inst_A9DCF292" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3648" name="inst_312EF4E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3648" name="inst_409A5F72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3648" name="inst_7B4663D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3382" y="3648" name="inst_82983EFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3420" y="3648" name="inst_71787124" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3458" y="3648" name="inst_643427CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -864,7 +855,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3154" y="3686" name="inst_2757DE7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3192" y="3686" name="inst_3EA532F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3724" name="inst_63E47554" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3724" name="inst_7A9D0463" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2926" y="3648" name="inst_21B7E820" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2964" y="3648" name="inst_309E7C06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3002" y="3648" name="inst_693F57BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -873,12 +863,7 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3800" y="3686" name="inst_E619AD40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3800" y="3724" name="inst_E849C2C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3800" y="3762" name="inst_CB1BB794" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3800" y="3800" name="inst_EA2AEE07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3534" y="3800" name="inst_CC8AE922" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3496" y="3800" name="inst_9170750B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3458" y="3800" name="inst_3ADF89B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3382" y="3762" name="inst_D184555B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3762" name="inst_8A72A716" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3306" y="3762" name="inst_49387BF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3762" name="inst_3B72EE8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3230" y="3762" name="inst_05D85F1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -888,39 +873,15 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3040" y="3724" name="inst_91D65DA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2964" y="3762" name="inst_D27CE5BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2926" y="3762" name="inst_F154C671" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2888" y="3762" name="inst_7A3F31B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2888" y="3686" name="inst_0206531C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2850" y="3686" name="inst_2BD7FBCB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2812" y="3686" name="inst_E408ED80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2812" y="3724" name="inst_5AC38BD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2850" y="3762" name="inst_DB233B2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2850" y="3800" name="inst_476A4357" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2888" y="3800" name="inst_9DD31D7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2926" y="3800" name="inst_9BAF40D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2964" y="3800" name="inst_959B5989" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3002" y="3800" name="inst_019787C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3040" y="3800" name="inst_F18C2B55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3078" y="3800" name="inst_016EA27E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3116" y="3800" name="inst_42CC3368" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3154" y="3800" name="inst_49EBED9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3192" y="3800" name="inst_F0774900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3230" y="3800" name="inst_FCC867EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3268" y="3800" name="inst_8BDD0BFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3306" y="3800" name="inst_E2CBFC2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3800" name="inst_978D96A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3382" y="3800" name="inst_EB0739CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3420" y="3800" name="inst_C4E9D9BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3420" y="3762" name="inst_C4EB3955" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3458" y="3762" name="inst_2445F256" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3496" y="3762" name="inst_C1813684" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3534" y="3762" name="inst_CA56D70B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3724" y="3762" name="inst_3092DAB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3762" y="3800" name="inst_9F044F76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3724" y="3800" name="inst_4580C1BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3686" y="3800" name="inst_AFC5B379" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3648" y="3800" name="inst_F07FC20E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3610" y="3800" name="inst_11BFBA86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3572" y="3800" name="inst_711614F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3572" y="3762" name="inst_D70197B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3610" y="3762" name="inst_94D5131C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3800" y="3648" name="inst_6D1688FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -957,7 +918,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="3496" y="3724" name="inst_6EE6BEE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3496" y="3686" name="inst_7D56A216" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3458" y="3686" name="inst_B884FE13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="3344" y="3686" name="inst_56512C40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3268" y="3724" name="inst_68C32680" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3230" y="3724" name="inst_406A2772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="3192" y="3724" name="inst_9FECA2A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -979,16 +939,9 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="2698" y="3686" name="inst_A4A4150E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2660" y="3686" name="inst_9C4D8E48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2622" y="3686" name="inst_78E5F15B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2736" y="3800" name="inst_B5396197" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2318" y="3762" name="inst_213686EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2280" y="3762" name="inst_38EF936D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2242" y="3762" name="inst_1B6519C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1900" y="3800" name="inst_56D85094" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1862" y="3800" name="inst_02A5AE62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1824" y="3800" name="inst_8CE4941B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1786" y="3800" name="inst_B668B866" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1748" y="3800" name="inst_EA36C26C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1710" y="3800" name="inst_A95F3CC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1558" y="3762" name="inst_04E6342D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1520" y="3762" name="inst_BDC9F66F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1482" y="3762" name="inst_060F4B9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -997,16 +950,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="1330" y="3762" name="inst_C9CB9B05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1254" y="3762" name="inst_4A0595B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1292" y="3762" name="inst_462A6610" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1330" y="3800" name="inst_877469FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1368" y="3800" name="inst_11CBF6F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1406" y="3800" name="inst_2DB4045E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1444" y="3800" name="inst_ADEFA2F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1482" y="3800" name="inst_9CA67F25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1520" y="3800" name="inst_69C9FA21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1558" y="3800" name="inst_8B86198E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1596" y="3800" name="inst_27965DEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1634" y="3800" name="inst_60A703B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1672" y="3800" name="inst_0F96BBA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1748" y="3724" name="inst_38C1D245" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1748" y="3686" name="inst_A8C6A1AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1786" y="3686" name="inst_A2C91054" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1095,9 +1038,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="2698" y="3762" name="inst_3123C026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2736" y="3762" name="inst_E961D528" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2774" y="3762" name="inst_AD7B9CEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2774" y="3800" name="inst_27B6702B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2812" y="3800" name="inst_CFDC703F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2812" y="3762" name="inst_77ABD346" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2774" y="3724" name="inst_7405F572" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2736" y="3724" name="inst_75B40AF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2698" y="3724" name="inst_26778A94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1118,19 +1058,11 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="2128" y="3724" name="inst_341EED14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2090" y="3724" name="inst_9CD8EA00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1938" y="3762" name="inst_B9DA79AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1938" y="3800" name="inst_102DBD03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1976" y="3800" name="inst_69102A75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2014" y="3800" name="inst_209DD695" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2394" y="3762" name="inst_08B119DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2432" y="3762" name="inst_0CF1DCE2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2470" y="3762" name="inst_6DD1A017" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2508" y="3762" name="inst_369E7170" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2546" y="3762" name="inst_257333D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2698" y="3800" name="inst_A4DCAE87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2660" y="3800" name="inst_5F5DD0B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2622" y="3800" name="inst_65715DD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2318" y="3800" name="inst_A35E56E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2280" y="3800" name="inst_109441D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2204" y="3762" name="inst_74A363E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2166" y="3762" name="inst_D3EEBA64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2128" y="3762" name="inst_ACEB73A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1138,58 +1070,22 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="1976" y="3762" name="inst_3A11C016" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2014" y="3762" name="inst_BE261D08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="2052" y="3762" name="inst_BB791AA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2052" y="3800" name="inst_17DBDBC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="0" y="3610" name="inst_1D4EDECF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="0" y="3648" name="inst_AA6FBBDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="0" y="3800" name="inst_DA9E363C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="76" y="3800" name="inst_78987D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="114" y="3800" name="inst_843E1079" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="152" y="3800" name="inst_72D08ECA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="190" y="3800" name="inst_42E92C6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="228" y="3800" name="inst_FD185D02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="266" y="3762" name="inst_F4B6FEB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="304" y="3762" name="inst_E482D2D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="570" y="3800" name="inst_A16E0990" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="608" y="3800" name="inst_A467E254" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="646" y="3800" name="inst_42BB5519" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="684" y="3800" name="inst_73B68810" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="722" y="3800" name="inst_09F1CDBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="760" y="3800" name="inst_EF98CEBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1292" y="3800" name="inst_93FFC445" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1254" y="3800" name="inst_0F31D504" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1216" y="3800" name="inst_DEBF560B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1178" y="3800" name="inst_3B155E53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1140" y="3800" name="inst_40387692" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="950" y="3762" name="inst_82204142" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="912" y="3762" name="inst_ADC66FE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="874" y="3762" name="inst_2A2E789D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="836" y="3762" name="inst_6CC6ED69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="836" y="3800" name="inst_6897DC64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="874" y="3800" name="inst_2BE391AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="912" y="3800" name="inst_6582D9E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="950" y="3800" name="inst_1A8CD1D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1026" y="3800" name="inst_EBA968E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1064" y="3800" name="inst_BBA89238" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1102" y="3800" name="inst_CD4E35A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="988" y="3800" name="inst_1BB48A1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="798" y="3800" name="inst_D335C0F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="684" y="3762" name="inst_D860D68F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="646" y="3762" name="inst_6E0D0602" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="608" y="3762" name="inst_E0C9D3EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="418" y="3762" name="inst_948C2FA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="380" y="3762" name="inst_7686890B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="266" y="3800" name="inst_B268C721" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="304" y="3800" name="inst_A374E5EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="342" y="3800" name="inst_0417C594" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="456" y="3762" name="inst_75830065" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="494" y="3800" name="inst_EAD782F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="532" y="3800" name="inst_D228EFC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="570" y="3762" name="inst_D020EA16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="532" y="3762" name="inst_108C3DEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="494" y="3762" name="inst_27ED9FF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="456" y="3800" name="inst_8D18B357" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="418" y="3800" name="inst_B666BBBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="380" y="3800" name="inst_CC78B7B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="342" y="3762" name="inst_8F9CBA88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="266" y="3724" name="inst_F488278D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="266" y="3686" name="inst_8807BAF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1199,7 +1095,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="0" y="3724" name="inst_B5F862B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="0" y="3762" name="inst_B58C0FAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="38" y="3762" name="inst_0221C2B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="38" y="3800" name="inst_00F115A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="76" y="3762" name="inst_E6484935" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3762" name="inst_E6329403" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="190" y="3724" name="inst_CBBA8B91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1285,9 +1180,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_soil" x="1178" y="3762" name="inst_23E68CFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1140" y="3762" name="inst_14D16703" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="1102" y="3762" name="inst_5ADBF5EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1064" y="3762" name="inst_66EB7247" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="1026" y="3762" name="inst_8749F121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="988" y="3762" name="inst_F6B33042" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="988" y="3724" name="inst_5EC6EE57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="950" y="3724" name="inst_9E1A1136" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="912" y="3724" name="inst_01EC9F2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1391,9 +1283,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="1330" y="3838" name="inst_A18D42AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1368" y="3838" name="inst_709FE617" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1406" y="3838" name="inst_6874D37E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="1634" y="3838" name="inst_361878A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="1672" y="3838" name="inst_11A82891" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="1710" y="3838" name="inst_086BBE1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1748" y="3838" name="inst_AD11EC95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1786" y="3838" name="inst_6BFEC2BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1824" y="3838" name="inst_5F78DFC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1407,22 +1296,15 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="2166" y="3838" name="inst_4DD23909" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2128" y="3838" name="inst_7D58AB27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2090" y="3838" name="inst_22CFACDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2242" y="3800" name="inst_D5E7D917" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2204" y="3800" name="inst_6B2CEBC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2166" y="3800" name="inst_345F696E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2128" y="3800" name="inst_92842F14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2090" y="3800" name="inst_167427DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1444" y="3838" name="inst_AD9A9833" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1482" y="3838" name="inst_CF00432D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1520" y="3838" name="inst_E834D707" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="1558" y="3838" name="inst_CE9F8D65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="1596" y="3838" name="inst_F078941E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2242" y="3838" name="inst_58BDBBAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2280" y="3838" name="inst_F086728C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2318" y="3838" name="inst_0F5F90D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2356" y="3838" name="inst_45C9F053" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3192" y="3838" name="inst_0B6F6673" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="3154" y="3838" name="inst_4E3B8DA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3116" y="3838" name="inst_B30C552D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3078" y="3838" name="inst_3780DD4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3040" y="3838" name="inst_C0AC0BE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1434,22 +1316,10 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="2812" y="3838" name="inst_7500DA21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2774" y="3838" name="inst_3157D277" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2736" y="3838" name="inst_8DA39702" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="2394" y="3838" name="inst_46E7A09B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="2432" y="3838" name="inst_2496BC2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="2470" y="3838" name="inst_B1EAEDC7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="2508" y="3838" name="inst_F0E10EFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="2546" y="3838" name="inst_24D27415" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2584" y="3838" name="inst_9020CB6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2622" y="3838" name="inst_D00B4731" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2660" y="3838" name="inst_0EE1BE52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="2698" y="3838" name="inst_45D3AC82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2356" y="3800" name="inst_4A43B4E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2394" y="3800" name="inst_91BD17ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2432" y="3800" name="inst_D2AA7F57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2470" y="3800" name="inst_E612F3F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2508" y="3800" name="inst_5533172F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2546" y="3800" name="inst_10C1A493" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="2584" y="3800" name="inst_4F36738F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3230" y="3838" name="inst_4FBED021" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3268" y="3838" name="inst_AD91B957" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3306" y="3838" name="inst_E39EA660" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1457,8 +1327,6 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="3382" y="3838" name="inst_2E890578" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3420" y="3838" name="inst_807AF98A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3458" y="3838" name="inst_D605A7D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="3496" y="3838" name="inst_2CDD73AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bedrock" x="3534" y="3838" name="inst_D857F7FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3572" y="3838" name="inst_587CCD93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3610" y="3838" name="inst_1C871272" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3648" y="3838" name="inst_7E9F0C31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1466,8 +1334,7 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_bedrock" x="3724" y="3838" name="inst_52016156" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3762" y="3838" name="inst_5624DA1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3800" y="3838" name="inst_BDC34B85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_character" x="3116" y="3420" name="inst_563EAA33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_soil" x="114" y="3413" name="inst_C541AC7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_character" x="3192" y="3420" name="inst_563EAA33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3382" name="inst_F9323ED8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3344" name="inst_0B5404C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3306" name="inst_005E085E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1684,6 +1551,64 @@ instance_create(x,y,obj_cursor);</code>
     <instance objName="obj_jewel" x="2432" y="3496" name="inst_E0DE4D1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="2926" name="inst_DEB1A7D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="2964" name="inst_0CBA0E74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2926" y="3420" name="inst_969EA711" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2888" y="3382" name="inst_B2B3DCE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2850" y="3344" name="inst_DA6F0EC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2812" y="3306" name="inst_7DD7AFA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2774" y="3268" name="inst_C75265B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2812" y="3192" name="inst_C2C8A90C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2850" y="3230" name="inst_301E897C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2888" y="3268" name="inst_1E6A2FB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2926" y="3306" name="inst_778E37B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2964" y="3344" name="inst_C1653E3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="3002" y="3382" name="inst_738DF7B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2774" y="3192" name="inst_9B8DBA26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2736" y="3268" name="inst_65142D7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2698" y="3268" name="inst_59CE8917" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2660" y="3268" name="inst_FE8687C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2584" y="3268" name="inst_22D1C572" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2546" y="3268" name="inst_DBDA934D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2394" y="3268" name="inst_98586ED9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2432" y="3268" name="inst_349736DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2470" y="3268" name="inst_D6DCBFD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2508" y="3268" name="inst_9E6A4887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2622" y="3268" name="inst_0D06572E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2736" y="3192" name="inst_65A6BF1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2698" y="3192" name="inst_62BBC14B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2660" y="3192" name="inst_004AAD28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2622" y="3192" name="inst_6BA68A65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2584" y="3192" name="inst_246827CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2546" y="3192" name="inst_C710B988" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2508" y="3192" name="inst_4C96ECDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2470" y="3192" name="inst_9347E4DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2432" y="3192" name="inst_F7ED4456" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2394" y="3192" name="inst_989A5DCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2318" y="3154" name="inst_86553DC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2318" y="3116" name="inst_565C4B3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2356" y="3116" name="inst_5B678412" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava" x="2318" y="3192" name="inst_5EE49683" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2318" y="3230" name="inst_381B473A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2318" y="3268" name="inst_7B2C3932" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="3838" y="3344" name="inst_71B7D00A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="3154" y="3838" name="inst_808B974F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2812" y="3762" name="inst_964E4598" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2850" y="3762" name="inst_80A4494E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="2888" y="3762" name="inst_7E38210C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="2546" y="3838" name="inst_9194A199" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="2508" y="3838" name="inst_F437F0B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="2470" y="3838" name="inst_72D607CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="2432" y="3838" name="inst_609C36FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="2394" y="3838" name="inst_FF89DF0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="1596" y="3838" name="inst_C01B71F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="1634" y="3838" name="inst_34CB432A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="1672" y="3838" name="inst_006C79CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="1710" y="3838" name="inst_75C1F44F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="950" y="3762" name="inst_68C736A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="988" y="3762" name="inst_790FDFF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="1026" y="3762" name="inst_08232CB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soil" x="1064" y="3762" name="inst_C6297729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="3534" y="3838" name="inst_AE0CAE87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bedrock" x="3496" y="3838" name="inst_ABB32071" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

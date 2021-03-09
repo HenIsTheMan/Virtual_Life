@@ -33,6 +33,29 @@ bHealth = 5;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///do nth, let alarm run
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -50,7 +73,7 @@ bHealth = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///do nothing, let alarm run
+            <string>///do nth, let alarm run
 </string>
           </argument>
         </arguments>
@@ -73,27 +96,71 @@ bHealth = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(bHealth = 0){
+            <string>///destroying, grabbing, healing and adding to bottomBar
+if(bHealth = 0){
     instance_destroy();
     if(irandom(5) == 5){
         instance_create(x,y,obj_jewel);
-    }
-    for(i = 2;i &lt; 22;i++){
-        if(global.countQuick[i] = 0){
-            global.thingsQuick[i] = spr_soil;
-            global.countQuick[i]++;
-            global.items[i] = obj_soil;
-            break;
-        } else if(global.thingsQuick[i] = spr_soil){
-            global.countQuick[i]++;
-            global.items[i] = obj_soil;
-            break;
+    } 
+    if(global.countQuick[0] % 2 = 0){
+        for(i = 2;i &lt; 22;i++){
+            if(global.countQuick[i] = 0){//if bottomBar slot is empty
+                global.thingsQuick[i] = obj_soil;//assign soil block as the thing in bottomBar slot
+                global.countQuick[i]++;//add to no. of soil blocks in bottomBar slot
+                break;//stop loop early so only fill 1 bottomBar slot
+            } else if(global.thingsQuick[i] = obj_soil){
+                global.countQuick[i]++;
+                break;
+            }
         }
-    }
+   }
 }
 
-if(mouse_check_button_released(mb_left)){
+if(mouse_check_button_released(mb_left) &amp;&amp; obj_GUI.on = 0 &amp;&amp; global.countQuick[0] % 2 = 0){//heal block when stop grabbing
     bHealth = 5;
+} else if(alarm[1] == -1){//heal block if stop dmg it for certain amt of time
+    bHealth = 5;
+    alarm[1] = 60;//reset heal timer
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///infectiousSoil, mole, chomper and bomb
+if(distance_to_object(obj_infectiousSoil) &lt;= 38 &amp;&amp; obj_infectiousSoil.alarm[0] == -1){
+    instance_change(obj_infectiousSoil,true);
+    obj_infectiousSoil.alarm[0] = 60;
+}//cannot all instances simultaneously infect
+
+if(distance_to_object(obj_mole) &lt;= 38 &amp;&amp; obj_mole.alarm[0] == -1){
+    obj_mole.xBroken = x;
+    obj_mole.yBroken = y;
+    bHealth = 0;
+    obj_mole.alarm[0] = 250;
+}//code to go to x and y of soil block broken
+
+if(place_meeting(x,y-1,obj_chomper)){
+    bHealth--;
+}
+
+if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
+    bHealth = 0;
 }
 </string>
           </argument>
@@ -117,14 +184,68 @@ if(mouse_check_button_released(mb_left)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(alarm[0] == -1 &amp;&amp; obj_GUI.on = 0 &amp;&amp; obj_GUI.clickedSlot[0] != 1){
-    if(distance_to_object(obj_character) &lt;= 64 &amp;&amp; distance_to_object(obj_character) &gt;= 0){
+            <string>if(alarm[0] == -1 &amp;&amp; distance_to_object(obj_character) &lt;= 76 &amp;&amp; obj_GUI.on = 0){
         bHealth--;
         alarm[0] = 10;
-    }
+        alarm[1] = 60;
 }
 
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>randomize();
+if(irandom(100) == 5){
+    instance_change(obj_infectiousSoil,true);
+    obj_infectiousSoil.alarm[0] = 60;
+} 
+/*if(instance_number(obj_mole) &lt; 1 &amp;&amp; irandom(100) == 5){
+    instance_change(obj_mole,true);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+if(bHealth != 5 &amp;&amp; obj_GUI.on = 0 &amp;&amp; global.countQuick[0] % 2 != 0){
+    draw_sprite(spr_cracks,4-bHealth,x,y);
+}
 </string>
           </argument>
         </arguments>
