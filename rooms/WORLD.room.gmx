@@ -8,7 +8,7 @@
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>-1</persistent>
-  <colour>12632256</colour>
+  <colour>8421504</colour>
   <showcolour>-1</showcolour>
   <code>window_set_position((display_get_width()-window_get_width())/2,(display_get_height()-(window_get_height()+15))/2);
 show_debug_overlay(true);

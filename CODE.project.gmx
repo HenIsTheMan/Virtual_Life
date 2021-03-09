@@ -32,8 +32,7 @@
       <sprite>sprites\spr_actions</sprite>
       <sprite>sprites\spr_moveBar</sprite>
       <sprite>sprites\spr_moveBall</sprite>
-      <sprite>sprites\spr_up</sprite>
-      <sprite>sprites\spr_down</sprite>
+      <sprite>sprites\spr_buttons</sprite>
       <sprite>sprites\spr_barrier1</sprite>
       <sprite>sprites\spr_barrier2</sprite>
       <sprite>sprites\spr_cursor</sprite>

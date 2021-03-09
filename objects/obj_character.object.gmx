@@ -78,15 +78,12 @@ keyPress[9] = ord('9');
 keyPress[10] = ord("Z");
 keyPress[11] = ord("X");
 
-xPos = 38;
 inv = 0;
 on = 0;
 page = 0;
 onColumn = 0;
 onRow = 0;
 drawOnCursor = 0;
-subimg1 = 0;
-subimg2 = 0;
 </string>
           </argument>
         </arguments>
@@ -140,6 +137,7 @@ subimg2 = 0;
           <argument>
             <kind>1</kind>
             <string>///movement and collisions
+xPos = device_mouse_x_to_gui(0) * (mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,152,608+76)) div 76 * 76 + 38 * !(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,152,608+76));
 a = keyboard_check(ord("A")) || xPos &lt; 38;
 b = keyboard_check(ord("D")) || xPos &gt; 38;
 c = keyboard_check(ord("W")) || (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
@@ -350,30 +348,12 @@ if(keyboard_check_pressed(ord("B"))){
             <string>///miscellaneous GUI
 for(i = 0;i &lt; hp;i++){
     draw_sprite(spr_heart,0,38*i,0);
-} 
-
-if(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,152,608+76)){  
-    xPos = device_mouse_x_to_gui(0) div 76 * 76;   
-} else{
-    xPos = 38;
-}
-
-if(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38)){
-    subimg1 = 1;
-} else{
-    subimg1 = 0;
-} 
-
-if(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38)){
-    subimg2 = 1;
-} else{
-    subimg2 = 0;
 }
 
 draw_sprite(spr_jewel,0,1216-38,0);
 draw_text(1216-38,10,jewels);
-draw_sprite(spr_up,subimg1,1064,608);
-draw_sprite(spr_down,subimg2,1140,608);
+draw_sprite_ext(spr_buttons,0,1064,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38)) + 0.7);
+draw_sprite_ext(spr_buttons,1,1140,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1178,646,38)) + 0.7);
 draw_sprite(spr_moveBar,0,0,608);
 draw_sprite(spr_moveBall,0,xPos,608); 
 </string>
