@@ -11,8 +11,15 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>display_set_gui_size(display_get_gui_width(),display_get_gui_height());
+window_set_position((display_get_width()-window_get_width())/2,(display_get_height()-(window_get_height()+15))/2);
 show_debug_overlay(true);
-window_set_caption("Virtual World");</code>
+window_set_caption("Virtual World");
+randomize();
+
+enum states{
+    die,
+    bounce
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -269,47 +276,22 @@ window_set_caption("Virtual World");</code>
     <instance objName="obj_soil" x="38" y="988" name="inst_0C95D915" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="38" y="950" name="inst_0DE239B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="38" y="912" name="inst_2AE7551A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jewel" x="494" y="912" name="inst_69DE2180" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jewel" x="570" y="912" name="inst_9B94E204" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jewel" x="798" y="912" name="inst_D6A7740B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jewel" x="798" y="988" name="inst_060573C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jewel" x="874" y="912" name="inst_BCEBBA73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jewel" x="874" y="988" name="inst_99C39DFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrier" x="0" y="1102" name="inst_D2B63D95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrier" x="0" y="-38" name="inst_63372F8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrier2" x="-38" y="0" name="inst_FED1DB4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrier2" x="1254" y="0" name="inst_55D97D2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
-    <tile bgName="tile_bedrock" x="0" y="1102" w="38" h="38" xo="0" yo="0" id="10000002" name="inst_AE627E3C" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="38" y="1102" w="38" h="38" xo="0" yo="0" id="10000003" name="inst_75D5656A" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="76" y="1102" w="38" h="38" xo="0" yo="0" id="10000004" name="inst_EF749626" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="114" y="1102" w="38" h="38" xo="0" yo="0" id="10000005" name="inst_DA87DDA2" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="152" y="1102" w="38" h="38" xo="0" yo="0" id="10000006" name="inst_34845203" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="190" y="1102" w="38" h="38" xo="0" yo="0" id="10000007" name="inst_05254F72" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="228" y="1102" w="38" h="38" xo="0" yo="0" id="10000008" name="inst_C59F98F1" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="266" y="1102" w="38" h="38" xo="0" yo="0" id="10000009" name="inst_52D7EF99" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="304" y="1102" w="38" h="38" xo="0" yo="0" id="10000010" name="inst_CC90077D" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="342" y="1102" w="38" h="38" xo="0" yo="0" id="10000011" name="inst_7D5CF8B1" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="380" y="1102" w="38" h="38" xo="0" yo="0" id="10000012" name="inst_29BA300D" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="418" y="1102" w="38" h="38" xo="0" yo="0" id="10000013" name="inst_A688B352" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="456" y="1102" w="38" h="38" xo="0" yo="0" id="10000014" name="inst_60FA8E34" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="494" y="1102" w="38" h="38" xo="0" yo="0" id="10000015" name="inst_CB33FDED" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="532" y="1102" w="38" h="38" xo="0" yo="0" id="10000016" name="inst_6EAB55EE" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="570" y="1102" w="38" h="38" xo="0" yo="0" id="10000017" name="inst_D21CD731" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="608" y="1102" w="38" h="38" xo="0" yo="0" id="10000018" name="inst_2153A6D2" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="646" y="1102" w="38" h="38" xo="0" yo="0" id="10000019" name="inst_EE9C4E7C" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="684" y="1102" w="38" h="38" xo="0" yo="0" id="10000020" name="inst_339E5A64" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="722" y="1102" w="38" h="38" xo="0" yo="0" id="10000021" name="inst_E2806DDA" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="760" y="1102" w="38" h="38" xo="0" yo="0" id="10000022" name="inst_D1704FA5" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="798" y="1102" w="38" h="38" xo="0" yo="0" id="10000023" name="inst_2E94ED72" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="836" y="1102" w="38" h="38" xo="0" yo="0" id="10000024" name="inst_72E2D015" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="874" y="1102" w="38" h="38" xo="0" yo="0" id="10000025" name="inst_754BD33D" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="912" y="1102" w="38" h="38" xo="0" yo="0" id="10000026" name="inst_6F97D5B6" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="950" y="1102" w="38" h="38" xo="0" yo="0" id="10000027" name="inst_4F32DAF9" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="988" y="1102" w="38" h="38" xo="0" yo="0" id="10000028" name="inst_B02BCFD6" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="1026" y="1102" w="38" h="38" xo="0" yo="0" id="10000029" name="inst_63C129B1" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="1064" y="1102" w="38" h="38" xo="0" yo="0" id="10000030" name="inst_283D1E41" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="1102" y="1102" w="38" h="38" xo="0" yo="0" id="10000031" name="inst_1B375A3F" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="1140" y="1102" w="38" h="38" xo="0" yo="0" id="10000032" name="inst_11B495DF" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_jewel" x="456" y="912" w="38" h="38" xo="0" yo="0" id="10000033" name="inst_4ED40104" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_jewel" x="532" y="912" w="38" h="38" xo="0" yo="0" id="10000034" name="inst_0DB76A89" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_jewel" x="760" y="912" w="38" h="38" xo="0" yo="0" id="10000035" name="inst_66A78A24" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_jewel" x="836" y="912" w="38" h="38" xo="0" yo="0" id="10000036" name="inst_476A3BC1" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_jewel" x="760" y="988" w="38" h="38" xo="0" yo="0" id="10000037" name="inst_2B1CACE9" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_jewel" x="836" y="988" w="38" h="38" xo="0" yo="0" id="10000039" name="inst_54651B5C" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="1178" y="1102" w="38" h="38" xo="0" yo="0" id="10000040" name="inst_5F7E893E" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_bedrock" x="1216" y="1102" w="38" h="38" xo="0" yo="0" id="10000041" name="inst_D8B0E784" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="&lt;undefined&gt;" x="494" y="912" w="38" h="38" xo="0" yo="0" id="10000033" name="inst_4ED40104" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="&lt;undefined&gt;" x="798" y="988" w="38" h="38" xo="0" yo="0" id="10000037" name="inst_2B1CACE9" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="&lt;undefined&gt;" x="874" y="988" w="38" h="38" xo="0" yo="0" id="10000039" name="inst_54651B5C" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="&lt;undefined&gt;" x="0" y="1102" w="1254" h="38" xo="0" yo="0" id="10000042" name="inst_93DCC119" depth="0" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

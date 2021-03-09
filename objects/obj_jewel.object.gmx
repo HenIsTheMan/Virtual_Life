@@ -25,10 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x,y,obj_character)){
-    instance_destroy();
-    obj_character.jewels++;
-}
+            <string>///script
+scr_jewel_step();
 </string>
           </argument>
         </arguments>

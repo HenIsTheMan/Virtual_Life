@@ -11,9 +11,14 @@
       <sprite>sprites\spr_infectiousSoil</sprite>
       <sprite>sprites\spr_lava</sprite>
       <sprite>sprites\spr_mole</sprite>
+      <sprite>sprites\spr_spawner</sprite>
       <sprite>sprites\spr_chomper</sprite>
       <sprite>sprites\spr_bomb</sprite>
       <sprite>sprites\spr_platform</sprite>
+      <sprite>sprites\spr_homingMissile</sprite>
+      <sprite>sprites\spr_ball</sprite>
+      <sprite>sprites\spr_null</sprite>
+      <sprite>sprites\spr_lonely</sprite>
     </sprites>
     <sprites name="others">
       <sprite>sprites\spr_characterStill</sprite>
@@ -27,38 +32,52 @@
       <sprite>sprites\spr_actions</sprite>
       <sprite>sprites\spr_moveBar</sprite>
       <sprite>sprites\spr_moveBall</sprite>
-      <sprite>sprites\spr_upDown</sprite>
+      <sprite>sprites\spr_up</sprite>
+      <sprite>sprites\spr_down</sprite>
+      <sprite>sprites\spr_barrier1</sprite>
+      <sprite>sprites\spr_barrier2</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background">
-    <background>background\tile_jewel</background>
-    <background>background\tile_bedrock</background>
-  </backgrounds>
+  <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_normal_create.gml</script>
     <script>scripts\scr_normal_step.gml</script>
     <script>scripts\scr_normal_draw.gml</script>
     <script>scripts\scr_infectiousSoil_alarm0.gml</script>
-    <script>scripts\scr_mole_alarm0.gml</script>
+    <script>scripts\scr_explodingMole_alarm0.gml</script>
+    <script>scripts\scr_spawner_alarm0.gml</script>
+    <script>scripts\scr_rotate_step.gml</script>
+    <script>scripts\scr_rotate_draw.gml</script>
     <script>scripts\scr_drop_step.gml</script>
     <script>scripts\scr_platform_step.gml</script>
+    <script>scripts\scr_homingMissile_step.gml</script>
+    <script>scripts\scr_character_bounce.gml</script>
+    <script>scripts\scr_character_die.gml</script>
+    <script>scripts\scr_character_normal.gml</script>
     <script>scripts\scr_rangeBox_step.gml</script>
+    <script>scripts\scr_jewel_step.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="items">
       <object>objects\obj_soil</object>
       <object>objects\obj_lava</object>
       <object>objects\obj_infectiousSoil</object>
-      <object>objects\obj_mole</object>
+      <object>objects\obj_explodingMole</object>
+      <object>objects\obj_spawner</object>
       <object>objects\obj_chomper</object>
       <object>objects\obj_bomb</object>
       <object>objects\obj_platform</object>
+      <object>objects\obj_homingMissile</object>
+      <object>objects\obj_ball</object>
     </objects>
     <objects name="others">
       <object>objects\obj_character</object>
       <object>objects\obj_rangeBox</object>
+      <object>objects\obj_jewel</object>
       <object>objects\obj_textBox</object>
+      <object>objects\obj_barrier</object>
+      <object>objects\obj_barrier2</object>
     </objects>
   </objects>
   <rooms name="rooms">

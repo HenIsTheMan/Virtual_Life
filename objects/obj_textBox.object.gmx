@@ -92,7 +92,7 @@ if(canWrite &amp;&amp; keyboard_check_pressed(vk_enter)){
             <kind>1</kind>
             <string>draw_self();
 if(canWrite){
-    keyboard_string = string_copy(keyboard_string,1,15);//limit no. of text
+    keyboard_string = string_copy(keyboard_string,1,15); //limit no. of text
     draw_text(x,y,"|");
     draw_text(x,y,keyboard_string);
 }
