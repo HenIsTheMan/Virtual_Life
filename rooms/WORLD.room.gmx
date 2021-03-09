@@ -1334,7 +1334,6 @@ instance_create(x,y,obj_GUI);</code>
     <instance objName="obj_bedrock" x="3724" y="3838" name="inst_52016156" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3762" y="3838" name="inst_5624DA1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3800" y="3838" name="inst_BDC34B85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_character" x="3192" y="3420" name="inst_563EAA33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3382" name="inst_F9323ED8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3344" name="inst_0B5404C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_soil" x="114" y="3306" name="inst_005E085E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1609,6 +1608,7 @@ instance_create(x,y,obj_GUI);</code>
     <instance objName="obj_soil" x="1064" y="3762" name="inst_C6297729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3534" y="3838" name="inst_AE0CAE87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3496" y="3838" name="inst_ABB32071" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_character" x="3154" y="3382" name="inst_052CF2D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

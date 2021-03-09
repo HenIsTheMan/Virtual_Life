@@ -148,13 +148,6 @@ if(distance_to_object(obj_infectiousSoil) &lt;= 38 &amp;&amp; obj_infectiousSoil
     obj_infectiousSoil.alarm[0] = 60;
 }//cannot all instances simultaneously infect
 
-if(distance_to_object(obj_mole) &lt;= 38 &amp;&amp; obj_mole.alarm[0] == -1){
-    obj_mole.xBroken = x;
-    obj_mole.yBroken = y;
-    bHealth = 0;
-    obj_mole.alarm[0] = 250;
-}//code to go to x and y of soil block broken
-
 if(place_meeting(x,y-1,obj_chomper)){
     bHealth--;
 }
@@ -190,36 +183,6 @@ if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
         alarm[1] = 60;
 }
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>randomize();
-if(irandom(100) == 5){
-    instance_change(obj_infectiousSoil,true);
-    obj_infectiousSoil.alarm[0] = 60;
-} 
-/*if(instance_number(obj_mole) &lt; 1 &amp;&amp; irandom(100) == 5){
-    instance_change(obj_mole,true);
-}
 </string>
           </argument>
         </arguments>

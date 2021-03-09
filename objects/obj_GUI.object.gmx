@@ -37,12 +37,10 @@ on = 0;
 page = 1;
 canChange = false;
 
-global.thingsQuick[5] = obj_mole;
+global.thingsQuick[5] = obj_infectiousSoil;
 global.countQuick[5] = 5;
-global.thingsQuick[6] = obj_chomper;
+global.thingsQuick[6] = obj_mole;
 global.countQuick[6] = 10;
-global.thingsQuick[7] = obj_bomb;
-global.countQuick[7] = 5;
 
 xPos[0] = 0;//left
 xPos[1] = 76;//right

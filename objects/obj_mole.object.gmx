@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 250;
-xBroken = x;
-yBroken = y;
-hSpeed = 0;
-vSpeed = 0;
+            <string>alarm[0] = 200;
 </string>
           </argument>
         </arguments>
@@ -75,34 +71,17 @@ vSpeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(x != xBroken){
-    hSpeed += xBroken-x;
-} else if(x = xBroken){
-    hSpeed = 0;
-}
-
-if(place_free(x,y+1)){
-    vSpeed += 15;
-} else{
-    vSpeed = 0;
-}
-
-if(!place_free(x+hSpeed*(delta_time/1000000),y)){
-            while(place_free(x+sign(hSpeed*(delta_time/1000000)),y)){
-                x += sign(hSpeed*(delta_time/1000000));
-            }
-            hSpeed = 0;
-        } else{
-            x += hSpeed;
+            <string>for(n = 0;n &lt; instance_number(obj_soil);n++){
+    if(alarm[0] == -1 &amp;&amp; distance_to_object(instance_find(obj_soil,n)) &lt;= 38){
+        var destroy = instance_find(obj_soil,n);
+        x = destroy.x;
+        y = destroy.y;
+        with(instance_find(obj_soil,n)){
+            bHealth = 0;
         }
-        if(!place_free(x,y+vSpeed*(delta_time/1000000))){
-            while(place_free(x,y+sign(vSpeed*(delta_time/1000000)))){
-                y += sign(vSpeed*(delta_time/1000000));
-            }
-            vSpeed = 0;
-        } else{
-            y += vSpeed*(delta_time/1000000);
-        }
+        alarm[0] = 200;
+    }
+}
 </string>
           </argument>
         </arguments>
