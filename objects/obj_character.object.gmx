@@ -38,10 +38,9 @@ hp = 30;
 hSpeed = 0;
 vSpeed = 0;
 zoomScale = 1;
-
 global.items = ds_list_create();
-global.items[| 0] = "set1";
-global.items[| 1] = "set2";
+global.amts = ds_map_create();
+
 global.items[| 2] = obj_soil;
 global.items[| 3] = obj_lava;
 global.items[| 4] = obj_infectiousSoil;
@@ -52,12 +51,22 @@ global.items[| 8] = obj_bomb;
 global.items[| 9] = obj_spawner;
 global.items[| 10] = obj_chomper;
 global.items[| 11] = obj_homingMissile;
-global.items[| 12] = obj_ball;
+global.items[| 14] = obj_ball;
 
-global.amts = ds_map_create();
 for(i = 0; i &lt; 36; i++){
-    if(!is_undefined(global.items[| i])){
+    if(i % 12 == 0){
+        global.items[| i] = "set1";
+    }
+    if(i % 12 == 1){
+        global.items[| i] = "set2";
+    }
+    if(is_undefined(global.items[| i])){
+        global.items[| i] = "empty";
+    }
+    if(is_real(global.items[| i])){
         global.amts[? global.items[| i]] = 999;
+    } else{
+        global.amts[? global.items[| i]] = 0;
     }
 }
 
@@ -146,7 +155,7 @@ if(b - a != 0){
     hSpeed += 25;
 }
 
-if(!place_free(x,y+1) &amp;&amp; g){
+if(!place_free(x,y+1) &amp;&amp; place_free(x,y-1) &amp;&amp; g){
     vSpeed = -600;
 } else if(vSpeed &lt; 0 &amp;&amp; !c){
     vSpeed = 0; 
@@ -230,6 +239,8 @@ switch(state){
           <argument>
             <kind>1</kind>
             <string>///view
+window_set_position((display_get_width()-window_get_width())/2,(display_get_height()-(window_get_height()+15))/2);
+
 if(keyboard_check_pressed(vk_shift)){
     switch(window_get_fullscreen()){
         case true: window_set_fullscreen(false); break;
@@ -356,7 +367,7 @@ draw_sprite_ext(spr_buttons,3,1140,608,1,1,0,-1,0.3 * !(mouse_check_button(mb_le
           <argument>
             <kind>1</kind>
             <string>///inv
-for(i = 12*page;i &lt; 12*page+12;i++){
+for(i = 12 * page; i &lt; 12 * page + 12; i++){
     draw_sprite(spr_slot,0,152+76*(i-12*page),608);
     if(keyboard_check_pressed(keyPress[i-12*page])){
         global.on = i;
@@ -375,32 +386,30 @@ for(i = 12*page;i &lt; 12*page+12;i++){
             global.on = i;
         }
     }
-    if(global.on % 12 &gt; 1 &amp;&amp; global.amts[? global.items[| global.on]] == 0){
-        ds_list_delete(global.items, global.on);
+    if(global.amts[? global.items[| global.on]] == 0 &amp;&amp; global.on % 12 &gt; 1){
+        global.items[| global.on] = "empty";
         global.on = 12*page;
     }
-    if(global.on div 12 == page){
-        draw_sprite(spr_slot,1,152+76*(global.on-12*page),608);
-    }
+    draw_sprite(spr_slot,1,152+76*(global.on-12*page),608);
     if(i % 12 &lt; 2){
         if(global.amts[? global.items[| i]] &amp; 1){
-            draw_sprite_stretched(spr_actions,(i-12*page)*2,152+76*(i-12*page)+9.5,608+9.5,57,57);
-        } else{
             draw_sprite_stretched(spr_actions,(i-12*page)*2+1,152+76*(i-12*page)+9.5,608+9.5,57,57);
+        } else{
+            draw_sprite_stretched(spr_actions,(i-12*page)*2,152+76*(i-12*page)+9.5,608+9.5,57,57);
         }
     }
-    if(!is_undefined(global.items[| i]) &amp;&amp; global.amts[? global.items[| i]] &gt; 0 &amp;&amp; i % 12 &gt; 1){
+    if(is_real(global.items[| i])){
         draw_set_halign(fa_center);
         draw_sprite_stretched(object_get_sprite(global.items[| i]),0,152+76*(i-12*page)+10.25,608+14.75,57,57);
         draw_text(152+76*(i-12*page)+38,608,global.amts[? global.items[| i]]);
     }
-    if(!is_undefined(global.items[| global.on]) &amp;&amp; mouse_check_button_pressed(mb_right) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(global.on-12*page),608,152+76*(global.on-12*page)+76,608+76)){
+    if(is_real(global.items[| global.on]) &amp;&amp; mouse_check_button_pressed(mb_right) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152+76*(global.on-12*page),608,152+76*(global.on-12*page)+76,608+76)){
         drawOnCursor = 1;
     } else if(mouse_check_button_released(mb_right)){
         drawOnCursor = 0;
         if(global.on div 12 != page &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),304,608,304+76*10,608+76)){
             global.on = 12*page;
-        } //for??
+        }
     }
     if(drawOnCursor &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),152,608,152+76*12,608+76)){
         draw_sprite_stretched(object_get_sprite(global.items[| global.on]),0,device_mouse_x_to_gui(0)-57/2,device_mouse_y_to_gui(0)-57/2,57,57);     
@@ -436,7 +445,7 @@ if(eq &amp; 1){
     }
 }
 
-if(global.on % 12 &gt; 1 &amp;&amp; place_empty(mouse_x div 38 * 38 + 19,mouse_y div 38 * 38 + 19) &amp;&amp; !collision_rectangle(mouse_x div 38 * 38,mouse_y div 38 * 38,mouse_x div 38 * 38 + 38,mouse_y div 38 * 38 +38,self,0,0) &amp;&amp; point_in_rectangle(mouse_x,mouse_y,(x - 76) div 38 * 38,(y - 76) div 38 * 38,(x - 76) div 38 * 38 + 189,(y - 76) div 38 * 38 + 189)){
+if(global.on % 12 &gt; 1 &amp;&amp; place_empty(mouse_x div 38 * 38 + 19,mouse_y div 38 * 38 + 19) &amp;&amp; !point_in_rectangle(mouse_x, mouse_y, floor((x - 19)/38) * 38, floor((y - 19)/38) * 38, ceil((x + 19)/38) * 38, ceil((y + 19)/38) * 38) &amp;&amp; point_in_rectangle(mouse_x,mouse_y,(x - 76) div 38 * 38,(y - 76) div 38 * 38,(x - 76) div 38 * 38 + 189,(y - 76) div 38 * 38 + 189)){
     draw_sprite_ext(global.items[| global.on],0,mouse_x div 38 * 38,mouse_y div 38 * 38,1,1,0,-1,0.3);
     if(mouse_check_button(mb_left)){
         instance_create(mouse_x div 38 * 38,mouse_y div 38 * 38,global.items[| global.on]);

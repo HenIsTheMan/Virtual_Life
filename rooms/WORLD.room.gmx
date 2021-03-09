@@ -10,10 +10,9 @@
   <persistent>-1</persistent>
   <colour>4227200</colour>
   <showcolour>-1</showcolour>
-  <code>window_set_position((display_get_width()-window_get_width())/2,(display_get_height()-(window_get_height()+15))/2);
+  <code>randomize();
 show_debug_overlay(true);
 window_set_caption("Virtual World");
-randomize();
 
 keyboard_set_map(vk_up,ord("W"));
 keyboard_set_map(vk_left,ord("A"));

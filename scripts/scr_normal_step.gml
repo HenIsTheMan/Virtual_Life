@@ -18,12 +18,12 @@ if(mouse_check_button(mb_left) && position_meeting(mouse_x,mouse_y,self) && dist
 if(grabTime == 0){
     instance_destroy();
     for(i = 2;i < 36;i++){
-        if(global.items[| i] = object_index && i % 12 > 1){
+        if(global.items[| i] == object_index && i % 12 > 1){
             global.amts[? global.items[| i]]++;
             break;
-        } else if(global.amts[? global.items[| i]] = 0 && index = 0 && i % 12 > 1 && i div 12 == obj_character.page){
+        } else if(global.amts[? global.items[| i]] == 0 && index == 0 && i % 12 > 1){
             index = i;
-        } else if(i = 35){
+        } else if(i == 35){
             global.items[| index] = object_index;
             global.amts[? global.items[| index]]++;
         }
