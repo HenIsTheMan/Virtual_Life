@@ -1,5 +1,5 @@
-x = (xPos + obj_character.x div 38)*38;
-y = (yPos + obj_character.y div 38)*38;
+x = obj_character.x div 38 * 38 + xOffset;
+y = obj_character.y div 38 * 38 + yOffset;
 
 if(!place_empty(x,y) || obj_character.on % 12 < 2){
     visible = false;

@@ -223,12 +223,12 @@ switch(state){
           <argument>
             <kind>1</kind>
             <string>///rangeBoxes
-for(xChange = -2;xChange &lt; 3;xChange++){
-    for(yChange = -2;yChange &lt; 3;yChange++){
+for(xOffset = -76;xOffset &lt; 114;xOffset += 38){
+    for(yOffset = -76;yOffset &lt; 114;yOffset += 38){
         if(instance_number(obj_rangeBox) &lt; 25){
-            rangeBoxCreate = instance_create(((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38,obj_rangeBox);
-            rangeBoxCreate.xPos = xChange;
-            rangeBoxCreate.yPos = yChange;
+            rangeBoxCreate = instance_create(x div 38 * 38 + xOffset,y div 38 * 38 + yOffset,obj_rangeBox);
+            rangeBoxCreate.xOffset = xOffset;
+            rangeBoxCreate.yOffset = yOffset;
         }
     }
 }
