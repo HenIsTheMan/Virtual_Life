@@ -24,6 +24,7 @@
       <sprite>sprites\spr_wings</sprite>
       <sprite>sprites\spr_jewel</sprite>
     </sprites>
+    <sprite>sprites\spr_rangeBox</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

@@ -248,6 +248,46 @@ if(global.wings){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///rangeBoxes for actions
+for(xChange = -2;xChange &lt; 3;xChange++){
+    for(yChange = -2;yChange &lt; 3;yChange++){
+        if(xChange != 0 or yChange != 0){
+            if(obj_GUI.on = 0 &amp;&amp; obj_GUI.clickedSlot[0] != 1){
+                if(place_free(((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38)){
+                    draw_sprite(spr_rangeBox,1,((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38);
+                } else{
+                draw_sprite(spr_rangeBox,0,((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38);
+                }
+            } else{
+                if(place_free(((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38)){
+                    draw_sprite(spr_rangeBox,0,((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38);
+                } else{
+                    draw_sprite(spr_rangeBox,1,((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38);
+                }
+            }
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
