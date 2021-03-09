@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>bHealth = 5;
+counting = 0;
 </string>
           </argument>
         </arguments>
@@ -48,7 +49,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///do nth, let alarm run
+            <string>///heal
+bHealth = 5;
+alarm[1] = 60;
 </string>
           </argument>
         </arguments>
@@ -94,15 +97,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///destroying, grabbing, healing and adding to bottomBar
-if(bHealth = 0){
+            <string>///destroy, grab, heal and add to bottomBar
+if(bHealth = 0 or counting = 5){
     instance_destroy();
     randomize();
     if(irandom(5) == 5){
         instance_create(x,y,obj_jewel);
     } 
-    if(global.countQuick[0] % 2 = 0){
-        for(i = 2;i &lt; 22;i++){
+    if(global.countQuick[0] % 2 = 0){//why cannot &amp; !1?
+        for(i = 2;i &lt; 18;i++){
             if(global.countQuick[i] = 0){//if bottomBar slot is empty
                 global.thingsQuick[i] = obj_soil;//assign soil block as the thing in bottomBar slot
                 global.countQuick[i]++;//add to no. of soil blocks in bottomBar slot
@@ -115,11 +118,8 @@ if(bHealth = 0){
    }
 }
 
-if(mouse_check_button_released(mb_left) &amp;&amp; obj_GUI.on = 0 &amp;&amp; global.countQuick[0] % 2 = 0){//heal block when stop grabbing
-    bHealth = 5;
-} else if(alarm[1] == -1){//heal block if stop dmg it for certain amt of time
-    bHealth = 5;
-    alarm[1] = 60;//reset heal timer
+if(mouse_check_button_released(mb_left)){
+    counting = 0;
 }
 </string>
           </argument>
@@ -143,11 +143,11 @@ if(mouse_check_button_released(mb_left) &amp;&amp; obj_GUI.on = 0 &amp;&amp; glo
             <kind>1</kind>
             <string>///chomper and bomb
 if(place_meeting(x,y-1,obj_chomper)){
-    bHealth--;
+    counting++;
 }
 
 if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
-    bHealth = 0;
+    counting = 5;
 }
 </string>
           </argument>
@@ -172,11 +172,14 @@ if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
           <argument>
             <kind>1</kind>
             <string>if(alarm[0] == -1 &amp;&amp; distance_to_object(obj_character) &lt;= 76 &amp;&amp; obj_GUI.on = 0){
-    bHealth--;
+    if(global.countQuick[0] &amp; 1){
+        bHealth--;
+    } else{
+        counting++;
+    }
     alarm[0] = 10;
-    alarm[1] = 60;
+    alarm[1] = 60;    
 }
-
 </string>
           </argument>
         </arguments>
@@ -200,7 +203,7 @@ if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
           <argument>
             <kind>1</kind>
             <string>draw_self();
-if(bHealth &lt; 5 &amp;&amp; obj_GUI.on = 0 &amp;&amp; global.countQuick[0] % 2 != 0){
+if(bHealth &lt; 5){
     draw_sprite(spr_cracks,4-bHealth,x,y);
 }
 </string>

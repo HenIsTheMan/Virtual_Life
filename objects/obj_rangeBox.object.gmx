@@ -51,8 +51,8 @@ yPos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var xPlayerPos = ((player.x+19) div 38);
-var yPlayerPos = ((player.y+19) div 38);
+            <string>var xPlayerPos = (player.x div 38);
+var yPlayerPos = (player.y div 38);
 
 x = (xPos + xPlayerPos)*38;
 y = (yPos + yPlayerPos)*38;
@@ -61,7 +61,7 @@ if(!place_free(x,y) or obj_GUI.on &lt; 2){
     visible = false;
 } else{
     visible = true;
-    if(!obj_GUI.canChange &amp;&amp; mouse_check_button(mb_left) &amp;&amp; obj_GUI.on &gt;= 2 &amp;&amp; global.countQuick[obj_GUI.on] != 0 &amp;&amp; position_meeting(mouse_x,mouse_y,self)){
+    if(mouse_check_button(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,self)){
         instance_create(x,y,global.thingsQuick[obj_GUI.on]);
         global.countQuick[obj_GUI.on]--;
     }

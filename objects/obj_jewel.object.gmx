@@ -31,7 +31,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_character">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,8 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
-global.jewels++;
+            <string>if(place_meeting(x,y,obj_character)){
+    instance_destroy();
+    global.jewels++;
+}
 </string>
           </argument>
         </arguments>

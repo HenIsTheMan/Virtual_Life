@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 60;
+            <string>image_speed = 0.1;
+alarm[0] = 60;
+vSpeed = 0;
 </string>
           </argument>
         </arguments>
@@ -73,6 +75,22 @@
             <kind>1</kind>
             <string>if(alarm[0] == -1){
     instance_destroy();
+    if(distance_to_object(obj_character) &lt;= 76){
+        health -= 3;
+    }
+}
+
+if(place_free(x,y+vSpeed*(delta_time/1000000))){
+    vSpeed += 15;
+}
+        
+if(!place_free(x,y+vSpeed*(delta_time/1000000))){
+    while(place_free(x,y+sign(vSpeed*(delta_time/1000000)))){
+        y += sign(vSpeed*(delta_time/1000000));
+    }
+    vSpeed = 0;
+} else{
+    y += vSpeed*(delta_time/1000000);
 }
 </string>
           </argument>
