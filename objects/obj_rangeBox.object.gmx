@@ -8,31 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>player = noone;
-xPos = 0;
-yPos = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -50,17 +25,14 @@ yPos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var xPlayerPos = (player.x div 38);
-var yPlayerPos = (player.y div 38);
+            <string>x = (xPos + obj_character.x div 38)*38;
+y = (yPos + obj_character.y div 38)*38;
 
-x = (xPos + xPlayerPos)*38;
-y = (yPos + yPlayerPos)*38;
-
-if(!place_free(x,y) or obj_GUI.on &lt; 2){
+if(!place_empty(x,y) or obj_GUI.on &lt; 2){
     visible = false;
 } else{
     visible = true;
-    if(mouse_check_button(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,self)){
+    if(mouse_check_button(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,self) &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),228,608,228+76*10,608+76)){
         instance_create(x,y,global.thingsQuick[obj_GUI.on]);
         global.countQuick[obj_GUI.on]--;
     }

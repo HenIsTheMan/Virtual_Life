@@ -25,15 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.wings = false;
-global.jewels = 0;
+            <string>global.jewels = 0;
+eq = 0;
+hp = 30;
+image_speed = 0.1;
+hSpeed = 0;
 vSpeed = 0;
-
+zoomScale = 1;
 dieBlocks[0] = obj_lava;
-
-originalWidth = view_wview;
-originalHeight = view_hview;
-zoomScale = 1; //1 = no zoom, the larger the number, the further out we're zooming
 </string>
           </argument>
         </arguments>
@@ -57,42 +56,22 @@ zoomScale = 1; //1 = no zoom, the larger the number, the further out we're zoomi
           <argument>
             <kind>1</kind>
             <string>///movement and collisions
-a = keyboard_check(vk_left) or obj_GUI.xPos &lt; 38;
-b = keyboard_check(vk_right) or obj_GUI.xPos &gt; 38;
-c = keyboard_check(vk_up);
-d = keyboard_check_pressed(vk_up);
-e = keyboard_check_released(vk_up);
+a = keyboard_check(ord("A")) or obj_GUI.xPos &lt; 38;
+b = keyboard_check(ord("D")) or obj_GUI.xPos &gt; 38;
+c = keyboard_check(ord("W")) or (mouse_check_button(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
+d = keyboard_check_pressed(ord("W")) or (mouse_check_button_pressed(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
+e = keyboard_check_released(ord("W")) or (mouse_check_button_released(mb_left) &amp;&amp; point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),1102,646,38));
 
-//horizontal movement
-if(a &amp;&amp; !b){
+if(b - a != 0){
     sprite_index = spr_characterMove;
-    image_speed = 0.1;
-    if(image_xscale = 1){
-        image_xscale = -1;
-    } else{
-        hSpeed -= 50;
-    }
-} else if(!a &amp;&amp; b){
-    sprite_index = spr_characterMove;
-    image_speed = 0.1;
-    if(image_xscale = -1){
-        image_xscale = 1;
-    } else{
-        hSpeed += 50;
-    }
-} else{
-    sprite_index = spr_characterStill;
-    image_speed = 0;
-    hSpeed = 0;
+    image_xscale = b - a;
+    hSpeed += 25;
 }
 
-hSpeed = clamp(hSpeed,-400,400);
-
-//jump
 if(!place_free(x,y+1) &amp;&amp; d){
-    vSpeed -= 500;
-} else if(vspeed &lt; 10){
-    vSpeed += 15;
+    vSpeed = -600;
+} else{
+    vSpeed += 20;
 }
 
 //var jump
@@ -100,18 +79,23 @@ if(vSpeed &lt; 0 &amp;&amp; e){
     vSpeed = 0; 
 }
 
+hSpeed = clamp(hSpeed,-400,400);
+vSpeed = clamp(vSpeed,-600,400);
+
 for(i = 0;i &lt; array_length_1d(dieBlocks);i++){
-    if(place_meeting(x+hSpeed*(delta_time/1000000),y+vSpeed*(delta_time/1000000),dieBlocks[i])){
+    if(hp &lt;= 0 or place_meeting(x+hSpeed*(b - a)*(delta_time/1000000),y+vSpeed*(delta_time/1000000),dieBlocks[i])){
         x = xstart;
         y = ystart;
+        hp = 30;
     } else{
-        if(!place_free(x+hSpeed*(delta_time/1000000),y)){
-            while(place_free(x+sign(hSpeed)/3,y)){//while there is space 1/3 pixel to the left or right of player depending on direction of movement
-                x += sign(hSpeed)/6;//x+1/6 pixel to the left or right...
+        if(!place_free(x+hSpeed*(b - a)*(delta_time/1000000),y)){
+            while(place_free(x + (b - a)/3,y)){
+                x += (b - a)/6;
             }
-            hSpeed = 0;//then stop moving
+            hSpeed = 0;
+            sprite_index = spr_characterStill;
         } else{
-            x += hSpeed*(delta_time/1000000);
+            x += hSpeed*(b - a)*(delta_time/1000000);
         }
         if(!place_free(x,y+vSpeed*(delta_time/1000000))){
             while(place_free(x,y+sign(vSpeed)/3)){
@@ -123,6 +107,10 @@ for(i = 0;i &lt; array_length_1d(dieBlocks);i++){
         }
     }
 }
+
+//stay within room
+x = clamp(x,19-5,room_width-19+5);
+y = clamp(y,19-2,room_height-19);
 </string>
           </argument>
         </arguments>
@@ -146,13 +134,10 @@ for(i = 0;i &lt; array_length_1d(dieBlocks);i++){
             <string>///rangeBoxes
 for(xChange = -2;xChange &lt; 3;xChange++){
     for(yChange = -2;yChange &lt; 3;yChange++){
-        if(instance_number(obj_rangeBox) = 25){
-            break;
-        } else{
-            var rangeBoxCreate = instance_create(((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38,obj_rangeBox);
+        if(instance_number(obj_rangeBox) &lt; 25){
+            rangeBoxCreate = instance_create(((x+(xChange*38)) div 38)*38,((y+(yChange*38)) div 38)*38,obj_rangeBox);
             rangeBoxCreate.xPos = xChange;
             rangeBoxCreate.yPos = yChange;
-            rangeBoxCreate.player = id;
         }
     }
 }
@@ -177,59 +162,30 @@ for(xChange = -2;xChange &lt; 3;xChange++){
           <argument>
             <kind>1</kind>
             <string>///view
+if(keyboard_check_pressed(vk_shift)){
+    switch(window_get_fullscreen()){
+        case true: window_set_fullscreen(false); break;
+        case false: window_set_fullscreen(true); break;
+    }
+}
 
-//zoom
-if(mouse_wheel_up()){
+if(mouse_wheel_up() &amp;&amp; zoomScale &gt; 0.5){
     zoomScale -= 38/608;
-} else if (mouse_wheel_down()){
+}
+if(mouse_wheel_down() &amp;&amp; zoomScale &lt; 2){
     zoomScale += 38/608;
 }
-//zoom cap
-zoomScale = clamp(zoomScale,0.5,2);
 
-view_wview = originalWidth * zoomScale;
-view_hview = originalHeight * zoomScale;
+view_wview = 608 * zoomScale;
+view_hview = 342 * zoomScale;
 
-//obj_character following
+//follow obj_character
 view_xview = obj_character.x - view_wview/2;
 view_yview = obj_character.y - view_hview/2;
 
-//cap bottom
-view_yview = min(view_yview,room_height-view_hview);
-//cap left (if view_xview exits room, it becomes negative and it &lt; 0 so view_xview = 0 instead of..., preventing...)
-view_xview = max(view_xview,0);
-//cap right (if view_xview exits room, room_width-view_wview &lt; view_xview so view_xview = room_width-view_wview instead of..., preventing...)
-view_xview = min(view_xview,room_width-view_wview);
-//cap top
-view_yview = max(view_yview,0);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(window_get_fullscreen()){
-    window_set_fullscreen(false);
-    window_set_position(0,0);
-} else{
-    window_set_fullscreen(true);
-}
+//cap view
+view_xview = clamp(view_xview,0,room_width-view_wview);
+view_yview = clamp(view_yview,0,room_height-view_hview);
 </string>
           </argument>
         </arguments>
@@ -254,13 +210,11 @@ view_yview = max(view_yview,0);
             <kind>1</kind>
             <string>///eq
 draw_self();
-if(keyboard_check_pressed(ord("W"))){
-    switch(global.wings){
-    case true: global.wings = false; break;
-    case false: global.wings = true; break;
-    }
+if(keyboard_check_pressed(ord("P"))){
+    eq++;
 }
-if(global.wings){
+
+if(eq &amp; 1){
     draw_sprite(spr_wings,0,x,y);
     if(c){
         vSpeed = -400; //can be upgraded

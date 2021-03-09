@@ -26,8 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>bHealth = 5;
-counting = 0;
-checkEmpty = false;
+grabTime = 5;
 </string>
           </argument>
         </arguments>
@@ -50,9 +49,7 @@ checkEmpty = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///heal
-bHealth = 5;
-alarm[1] = 60;
+            <string>///do nth
 </string>
           </argument>
         </arguments>
@@ -75,7 +72,7 @@ alarm[1] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///do nth, let alarm run
+            <string>///do nth
 </string>
           </argument>
         </arguments>
@@ -98,93 +95,49 @@ alarm[1] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///destroy, grab, heal and add to bottomBar
-if(bHealth = 0 or counting = 5){
+            <string>//chomper and bomb
+if(place_meeting(x,y-1,obj_chomper) or (distance_to_object(obj_bomb) &lt;= 76 &amp;&amp; obj_bomb.alarm[0] == -1)){
     instance_destroy();
-    randomize();
-    if(irandom(5) == 5){
-        instance_create(x,y,obj_jewel);
-    } 
-    if(global.countQuick[0] % 2 = 0){//why cannot &amp; !1?
-        for(i = 2;i &lt; 18;i++){
-            if(global.thingsQuick[i] = obj_soil){
-                global.countQuick[i]++;
-                break;
-            } else if(i = 17 &amp;&amp; global.thingsQuick[i] != obj_soil){
-                checkEmpty = true;
-                i = 2;
-            }
-            if(global.countQuick[i] = 0 &amp;&amp; checkEmpty){//if bottomBar slot is empty
-                global.thingsQuick[i] = obj_soil;//assign soil block as the thing in bottomBar slot
-                global.countQuick[i]++;//add to no. of soil blocks in bottomBar slot
-                break;//stop loop early so only fill 1 bottomBar slot
-                checkEmpty = false;
+}
+
+if(mouse_check_button(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,self) &amp;&amp; distance_to_object(obj_character) &lt;= 76 &amp;&amp; obj_GUI.on == 0){
+    if(global.countQuick[0] % 2 == 0 &amp;&amp; alarm[0] == -1){
+        grabTime--;
+        alarm[0] = 10;
+    } else if(global.countQuick[0] &amp; 1 &amp;&amp; alarm[1] == -1){
+        bHealth--;
+        alarm[1] = 10;
+    }
+}
+
+if(mouse_check_button_released(mb_left) or !position_meeting(mouse_x,mouse_y,self)){
+    grabTime = 5;
+}
+
+if(grabTime == 0){
+    instance_destroy();
+    for(i = 2;i &lt; 18;i++){
+        if(global.thingsQuick[i] == object_index){
+            global.countQuick[i]++;
+            break;
+        } else if(i == 17){
+            for(index = 2;index &lt; 18;index++){
+                if(global.countQuick[index] == 0){
+                    global.thingsQuick[index] = object_index;
+                    global.countQuick[index]++;
+                    break;
+                }
             }
         }
-   }
-}
-
-if(mouse_check_button_released(mb_left)){
-    counting = 0;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///chomper and bomb
-if(place_meeting(x,y-1,obj_chomper)){
-    counting++;
-}
-
-if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
-    counting = 5;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(alarm[0] == -1 &amp;&amp; distance_to_object(obj_character) &lt;= 76 &amp;&amp; obj_GUI.on = 0){
-    if(global.countQuick[0] &amp; 1){
-        bHealth--;
-    } else{
-        counting++;
     }
-    alarm[0] = 10;
-    alarm[1] = 60;    
+} //add to inv??
+
+if(bHealth == 0){
+    instance_destroy();
+    randomize();
+    if(irandom(4) == 4){ //20% chance
+        instance_create(x,y,obj_jewel);
+    }
 }
 </string>
           </argument>

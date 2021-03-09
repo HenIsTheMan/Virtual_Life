@@ -14,12 +14,11 @@
       <sprite>sprites\spr_mole</sprite>
       <sprite>sprites\spr_chomper</sprite>
       <sprite>sprites\spr_bomb</sprite>
+      <sprite>sprites\spr_platform</sprite>
     </sprites>
     <sprites name="GUI">
-      <sprite>sprites\spr_infinite</sprite>
       <sprite>sprites\spr_slot</sprite>
       <sprite>sprites\spr_actions</sprite>
-      <sprite>sprites\spr_nextPage</sprite>
       <sprite>sprites\spr_moveBar</sprite>
       <sprite>sprites\spr_moveBall</sprite>
       <sprite>sprites\spr_upDown</sprite>
@@ -31,8 +30,9 @@
       <sprite>sprites\spr_jewel</sprite>
       <sprite>sprites\spr_cracks</sprite>
       <sprite>sprites\spr_rangeBox</sprite>
+      <sprite>sprites\spr_heart</sprite>
+      <sprite>sprites\spr_infinite</sprite>
     </sprites>
-    <sprite>sprites\spr_heart</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -45,6 +45,7 @@
       <object>objects\obj_mole</object>
       <object>objects\obj_chomper</object>
       <object>objects\obj_bomb</object>
+      <object>objects\obj_platform</object>
     </objects>
     <objects name="others">
       <object>objects\obj_character</object>
