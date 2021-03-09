@@ -28,7 +28,6 @@
             <string>global.wings = false;
 global.jewels = 0;
 image_speed = 0;
-moveSpeed = 500;
 vSpeed = 0;
 
 dieBlocks[0] = obj_lava;

@@ -51,6 +51,7 @@
       <object>objects\obj_textBox</object>
       <object>objects\obj_rangeBox</object>
     </objects>
+    <object>objects\obj_void</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\WORLD</room>

@@ -71,16 +71,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(n = 0;n &lt; instance_number(obj_soil);n++){
-    if(alarm[0] == -1 &amp;&amp; distance_to_object(instance_find(obj_soil,n)) &lt;= 38){
-        var destroy = instance_find(obj_soil,n);
+            <string>if(alarm[0] == -1){
+    var destroy = instance_nearest(x,y,obj_soil);
         x = destroy.x;
         y = destroy.y;
-        with(instance_find(obj_soil,n)){
-            bHealth = 0;
-        }
+        destroy.bHealth = 0;
         alarm[0] = 200;
-    }
 }
 </string>
           </argument>

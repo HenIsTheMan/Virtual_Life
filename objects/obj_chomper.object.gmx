@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hSpeed = 0;
-vSpeed = 0;
+            <string>vSpeed = 0;
 </string>
           </argument>
         </arguments>
@@ -51,15 +50,6 @@ vSpeed = 0;
             <kind>1</kind>
             <string>if(place_free(x,y+vSpeed*(delta_time/1000000))){
     vSpeed += 15;
-}
-
-if(!place_free(x+hSpeed*(delta_time/1000000),y)){
-    while(place_free(x+sign(hSpeed*(delta_time/1000000)),y)){
-        x += sign(hSpeed*(delta_time/1000000));
-    }
-    hSpeed = 0;
-} else{
-    x += hSpeed*(delta_time/1000000);
 }
         
 if(!place_free(x,y+vSpeed*(delta_time/1000000))){

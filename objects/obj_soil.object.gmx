@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 0;
-image_speed = 0;
-bHealth = 5;
+            <string>bHealth = 5;
 </string>
           </argument>
         </arguments>
@@ -99,6 +97,7 @@ bHealth = 5;
             <string>///destroying, grabbing, healing and adding to bottomBar
 if(bHealth = 0){
     instance_destroy();
+    randomize();
     if(irandom(5) == 5){
         instance_create(x,y,obj_jewel);
     } 
@@ -142,12 +141,7 @@ if(mouse_check_button_released(mb_left) &amp;&amp; obj_GUI.on = 0 &amp;&amp; glo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///infectiousSoil, mole, chomper and bomb
-if(distance_to_object(obj_infectiousSoil) &lt;= 38 &amp;&amp; obj_infectiousSoil.alarm[0] == -1){
-    instance_change(obj_infectiousSoil,true);
-    obj_infectiousSoil.alarm[0] = 60;
-}//cannot all instances simultaneously infect
-
+            <string>///chomper and bomb
 if(place_meeting(x,y-1,obj_chomper)){
     bHealth--;
 }
@@ -178,9 +172,9 @@ if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
           <argument>
             <kind>1</kind>
             <string>if(alarm[0] == -1 &amp;&amp; distance_to_object(obj_character) &lt;= 76 &amp;&amp; obj_GUI.on = 0){
-        bHealth--;
-        alarm[0] = 10;
-        alarm[1] = 60;
+    bHealth--;
+    alarm[0] = 10;
+    alarm[1] = 60;
 }
 
 </string>
@@ -206,7 +200,7 @@ if(distance_to_object(obj_bomb) &lt;= 64 &amp;&amp; obj_bomb.alarm[0] == -1){
           <argument>
             <kind>1</kind>
             <string>draw_self();
-if(bHealth != 5 &amp;&amp; obj_GUI.on = 0 &amp;&amp; global.countQuick[0] % 2 != 0){
+if(bHealth &lt; 5 &amp;&amp; obj_GUI.on = 0 &amp;&amp; global.countQuick[0] % 2 != 0){
     draw_sprite(spr_cracks,4-bHealth,x,y);
 }
 </string>

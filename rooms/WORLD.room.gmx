@@ -10,8 +10,8 @@
   <persistent>-1</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>display_set_gui_maximise();
-//display_set_gui_size(-1,-1);
+  <code>//display_set_gui_maximise(view_wview,view_hview);
+display_set_gui_size(display_get_gui_width(),display_get_gui_height());
 instance_create(x,y,obj_GUI);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -1609,6 +1609,14 @@ instance_create(x,y,obj_GUI);</code>
     <instance objName="obj_bedrock" x="3534" y="3838" name="inst_AE0CAE87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bedrock" x="3496" y="3838" name="inst_ABB32071" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_character" x="3154" y="3382" name="inst_052CF2D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="2850" y="2850" name="inst_76718CC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3230" y="2964" name="inst_B11939FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3040" y="3116" name="inst_B8F1EC88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3230" y="2812" name="inst_7512E9E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3724" y="3078" name="inst_E5C8AD91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3610" y="3344" name="inst_741BCE8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3420" y="3116" name="inst_E4CD3478" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_void" x="3610" y="2850" name="inst_B7F2DACB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
