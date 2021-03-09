@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>global.wings = false;
 global.jewels = 0;
-image_speed = 0;
 vSpeed = 0;
 
 dieBlocks[0] = obj_lava;
@@ -180,14 +179,13 @@ for(xChange = -2;xChange &lt; 3;xChange++){
             <string>///view
 
 //zoom
-if (mouse_wheel_up()){
+if(mouse_wheel_up()){
     zoomScale -= 38/608;
 } else if (mouse_wheel_down()){
     zoomScale += 38/608;
 }
-
-//cap zoomScale1 and zoomScale2 between 0.5 and 2
-zoomScale = max(190/608, min(zoomScale, 2));
+//zoom cap
+zoomScale = clamp(zoomScale,0.5,2);
 
 view_wview = originalWidth * zoomScale;
 view_hview = originalHeight * zoomScale;
@@ -196,11 +194,11 @@ view_hview = originalHeight * zoomScale;
 view_xview = obj_character.x - view_wview/2;
 view_yview = obj_character.y - view_hview/2;
 
-// cap bottom
+//cap bottom
 view_yview = min(view_yview,room_height-view_hview);
-// cap left (if view_xview exits room, it becomes negative and it &lt; 0 so view_xview = 0 instead of..., preventing...)
+//cap left (if view_xview exits room, it becomes negative and it &lt; 0 so view_xview = 0 instead of..., preventing...)
 view_xview = max(view_xview,0);
-// cap right (if view_xview exits room, room_width-view_wview &lt; view_xview so view_xview = room_width-view_wview instead of..., preventing...)
+//cap right (if view_xview exits room, room_width-view_wview &lt; view_xview so view_xview = room_width-view_wview instead of..., preventing...)
 view_xview = min(view_xview,room_width-view_wview);
 //cap top
 view_yview = max(view_yview,0);

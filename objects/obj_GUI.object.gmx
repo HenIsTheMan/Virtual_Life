@@ -25,26 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
-display_set_gui_size(display_get_gui_width(),display_get_gui_height());
+            <string>display_set_gui_size(display_get_gui_width(),display_get_gui_height());
+///quick slots
 for(i = 0;i &lt; 18;i++){
     global.thingsQuick[i] = noone;
     global.countQuick[i] = 0;
 }
-health = 1216/38 - 2;
 
-on = 0;
-page = 0;
-xPos = 38;
-y = 608;
-onColumn = 0;
-onRow = 0;
-invPressed = false;
-quickPressed = false;
-    global.thingsQuick[2] = obj_mole;
-    global.countQuick[2] = 999;
-
-//inventory
+//inventory slots
 for(r = 0;r &lt; 7;r++){//rows
     for(c = 0;c &lt; 15;c++){//columns
         global.thingsInv[c,r] = noone;
@@ -52,8 +40,21 @@ for(r = 0;r &lt; 7;r++){//rows
     }
 }
 
-    global.thingsInv[2,2] = obj_chomper;
-    global.countInv[2,2] = 999;
+global.thingsQuick[2] = obj_bomb;
+global.countQuick[2] = 999;
+global.thingsInv[2,2] = obj_chomper;
+global.countInv[2,2] = 999;
+
+health = 1216/38 - 2;
+inv = false;
+xPos = 38;
+on = 0;
+page = 0;
+onColumn = 0;
+onRow = 0;
+draw = false;
+xDraw = 0;
+yDraw = 0;
 </string>
           </argument>
         </arguments>
@@ -76,22 +77,23 @@ for(r = 0;r &lt; 7;r++){//rows
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///nextPage and moveBall
-
+            <string>///nextPage &amp;&amp; inventory
 if(mouse_check_button_pressed(mb_left)){
-    if(page &gt; 0 &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),228,y,228+38,y+76)){
+    if(page &gt; 0 &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),228,608,228+38,608+76)){
         page--;
         on = 9*(page);
-    } else if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),950,y,950+38,y+76)){
+    } else if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),950,608,950+38,608+76)){
         page++;
         on = 9*(page);
     }
 }
 
-if(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,y,0+152,y+76)){
-    xPos = min((device_mouse_x_to_gui(0) div 76)*76,76);
-} else{
-    xPos = 38;
+if(keyboard_check_pressed(ord("I"))){
+    switch(inv){
+    case true: inv = false; break;
+    case false: inv = true; break;
+    }
+    return 0;
 }
 </string>
           </argument>
@@ -117,18 +119,15 @@ if(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_g
             <kind>1</kind>
             <string>///quickSlots and other GUI
 for(i = 9*page;i &lt; 9+9*page;i++){
-    x = 266+76*(i-9*page);
-    draw_self();
-    if(mouse_check_button_pressed(mb_any) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),y,266+76*(i-9*page)+76,y+76) /*or keyboard_check_pressed(key_press[i])*/){
+    draw_sprite(spr_slot,0,266+76*(i-9*page),608);
+    if(mouse_check_button_pressed(mb_any) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76) /*or keyboard_check_pressed(key_press[i])*/){
+        if(mouse_check_button_pressed(mb_left)){
+            draw = true;
+        }
         if(on = i &amp;&amp; on &lt; 2 &amp;&amp; mouse_check_button_pressed(mb_left)){
             global.countQuick[on]++;
         } else{
             on = i;
-        }
-        if(mouse_check_button_pressed(mb_left)){
-            quickPressed = true;
-        } else{
-            quickPressed = false;
         }
         if(mouse_check_button_pressed(mb_right) &amp;&amp; global.countQuick[on] != 0){//beating to other quickSlots
             for(add = 1;add &lt; 16;add++){
@@ -144,45 +143,40 @@ for(i = 9*page;i &lt; 9+9*page;i++){
                 }
             }
         }
+    } else if(i &gt; 1 &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76) &amp;&amp; global.countQuick[i] = 0){
+        draw = false;
+        global.thingsQuick[i] = global.thingsQuick[on];
+        global.countQuick[i] = global.countQuick[on];
+        if(i != on){
+            global.thingsQuick[on] = noone;
+            global.countQuick[on] = 0;
+        }
+    } else if(mouse_check_button_released(mb_left) &amp;&amp; !point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),608,266+76*(i-9*page)+76,608+76)){
+        draw = false;
     }
     if(global.countQuick[on] = 0 &amp;&amp; on &gt; 1){
         on = 0;
     }
-    draw_sprite(spr_slot,1,266+76*(on-9*page),y);
-    if(i &gt; 1){
-        if(global.countQuick[i] != 0){
-            if(mouse_check_button(mb_left) &amp;&amp; on &gt; 1){
-                draw_sprite_stretched(object_get_sprite(global.thingsQuick[on]),0,device_mouse_x_to_gui(0)-19,device_mouse_y_to_gui(0)-19,sprite_width/1.5,sprite_height/1.5);
-            } else{
-                draw_sprite_stretched(object_get_sprite(global.thingsQuick[i]),0,266+76*(i-9*page)+14,y+17,sprite_width/1.5,sprite_height/1.5);
-            }    
-            if(global.countQuick[i] &gt; 1){
-                draw_set_halign(fa_center);
-                draw_text(266+76*(i-9*page)+38,y,global.countQuick[i]);
-            }
+    draw_sprite(spr_slot,1,266+76*(on-9*page),608);
+    if(i &gt; 1 &amp;&amp; global.thingsQuick[i] != noone){
+        draw_sprite_stretched(object_get_sprite(global.thingsQuick[i]),0,266+76*(i-9*page)+14,608+17,sprite_width/1.5,sprite_height/1.5); 
+        if(global.countQuick[i] &gt; 1){
+            draw_set_halign(fa_center);
+            draw_text(266+76*(i-9*page)+38,608,global.countQuick[i]);
         }
-    } else{
-        draw_sprite(spr_infinite,0,266+76*(i-9*page)+27,y); 
+    } 
+    if(on &gt; 1 &amp;&amp; global.countQuick[on] != 0 &amp;&amp; draw){
+        draw_sprite_stretched(object_get_sprite(global.thingsQuick[on]),0,device_mouse_x_to_gui(0) - 19,device_mouse_y_to_gui(0) - 19,sprite_width/1.5,sprite_height/1.5); 
+    }
+    if(i &lt; 2){
+        draw_sprite(spr_infinite,0,266+76*(i-9*page)+27,608); 
         if(global.countQuick[i] &amp; 1){
-            draw_sprite(spr_actions,i*2+1,266+76*i+9,y+18);
+            draw_sprite(spr_actions,i*2+1,266+76*i+9,608+18);
         } else{
-            draw_sprite(spr_actions,i*2,266+76*i+9,y+18);
+            draw_sprite(spr_actions,i*2,266+76*i+9,608+18);
         }
     }
-    if(mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),266+76*(i-9*page),y,266+76*(i-9*page)+76,y+76)){
-        global.thingsQuick[i] = global.thingsInv[onColumn,onRow];
-        global.countQuick[i] = global.countInv[onColumn,onRow];
-        global.thingsInv[onColumn,onRow] = noone;
-        global.countInv[onColumn,onRow] = 0;
-    }
-    draw_sprite(spr_upDown,2,1064,y);
-    draw_sprite(spr_upDown,3,1140,y);
-    draw_sprite(spr_nextPage,0,229,y);
-    draw_sprite(spr_nextPage,0,950,y);
-    draw_sprite(spr_moveBar,0,0,y);
-    draw_sprite(spr_moveBall,0,xPos,y);
 }
-    
 </string>
           </argument>
         </arguments>
@@ -204,7 +198,6 @@ for(i = 9*page;i &lt; 9+9*page;i++){
           <argument>
             <kind>1</kind>
             <string>///health and jewelCount
-//draw_healthbar(0,0,0+152,0+76,health,c_gray,c_red,c_lime,0,true,true);
 for(i = 0;i &lt; health;i++){
     draw_sprite(spr_heart,0,0+38*i,0);
 }  
@@ -212,6 +205,19 @@ for(i = 0;i &lt; health;i++){
 draw_sprite(spr_jewel,0,1216-38,0);
 draw_set_halign(fa_right);
 draw_text(1216-38,19/2,global.jewels);
+
+draw_sprite(spr_upDown,2,1064,608);
+draw_sprite(spr_upDown,3,1140,608);
+draw_sprite(spr_nextPage,0,229,608);
+draw_sprite(spr_nextPage,0,950,608);
+draw_sprite(spr_moveBar,0,0,608);
+
+if(mouse_check_button(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),0,608,0+152,608+76)){
+    xPos = min((device_mouse_x_to_gui(0) div 76)*76,76);      
+} else{
+    xPos = 38;
+}
+draw_sprite(spr_moveBall,0,xPos,608); 
 </string>
           </argument>
         </arguments>
@@ -233,15 +239,12 @@ draw_text(1216-38,19/2,global.jewels);
           <argument>
             <kind>1</kind>
             <string>///inventory
+if(inv){
 for(r = 0;r &lt; 7;r++){//limit on rows
     for(c = 0;c &lt; 15;c++){//limit on columns
         draw_sprite(spr_slot,0,38+76*c,47+76*r);
         if(global.countInv[c,r] != 0){
-            if(mouse_check_button(mb_left) &amp;&amp; global.thingsInv[onColumn,onRow] != noone &amp;&amp; on &lt; 2){
-                draw_sprite_stretched(object_get_sprite(global.thingsInv[onColumn,onRow]),0,device_mouse_x_to_gui(0)-19,device_mouse_y_to_gui(0)-19,sprite_width/1.5,sprite_height/1.5);
-            } else{
-                draw_sprite_stretched(object_get_sprite(global.thingsInv[c,r]),0,38+76*c+14,47+76*r+17,sprite_width/1.5,sprite_height/1.5);
-            }
+            draw_sprite_stretched(object_get_sprite(global.thingsInv[c,r]),0,38+76*c+14,47+76*r+17,sprite_width/1.5,sprite_height/1.5);
             if(global.countInv[c,r] &gt; 1){
                 draw_set_halign(fa_center);
                 draw_text(38+76*c+38,47+76*r,global.countInv[c,r]);
@@ -250,19 +253,31 @@ for(r = 0;r &lt; 7;r++){//limit on rows
         if(mouse_check_button_pressed(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38+76*c,47+76*r,38+76*c+76,47+76*r+76)){
             onColumn = c;
             onRow = r;
-            invPressed = true;
-        } else{
-            invPressed = false;
         }
         draw_sprite(spr_slot,1,38+76*onColumn,47+76*onRow);
-        if(on &gt; 1 &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38+76*c,47+76*r,38+76*c+76,47+76*r+76)){
-            global.thingsInv[c,r] = global.thingsQuick[on];
-            global.countInv[c,r] = global.countQuick[on];
-            global.thingsQuick[on] = noone;
-            global.countQuick[on] = 0;
-        }
     }
 }
+}
+/*            if(mouse_check_button(mb_left) &amp;&amp; global.thingsInv[onColumn,onRow] != noone &amp;&amp; on &lt; 2){
+                invOnMouse = true;
+                draw_sprite_stretched(object_get_sprite(global.thingsInv[onColumn,onRow]),0,device_mouse_x_to_gui(0)-19,device_mouse_y_to_gui(0)-19,sprite_width/1.5,sprite_height/1.5);
+            } else{
+                invOnMouse = false;
+                draw_sprite_stretched(object_get_sprite(global.thingsInv[c,r]),0,38+76*c+14,47+76*r+17,sprite_width/1.5,sprite_height/1.5);
+            }
+                    if(mouse_check_button_released(mb_left) &amp;&amp; point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),38+76*c,47+76*r,38+76*c+76,47+76*r+76)){
+            if(invOnMouse){
+                global.thingsInv[c,r] = global.thingsInv[onColumn,onRow];
+                global.countInv[c,r] = global.countInv[onColumn,onRow];
+                global.thingsInv[c,r] = noone;
+                global.countInv[c,r] = 0;
+            } else if(quickOnMouse){
+                global.thingsInv[c,r] = global.thingsQuick[on];
+                global.countInv[c,r] = global.countQuick[on];
+                global.thingsQuick[on] = noone;
+                global.countQuick[on] = 0;
+            }
+        }
 </string>
           </argument>
         </arguments>
