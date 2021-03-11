@@ -1,2 +1,5 @@
 # Virtual_Life
-2nd GMS project
+It's life, in virtuality.
+
+- 2nd GMS project
+- Platformer
